@@ -1,3 +1,9 @@
+# Folders
 node_modules
 coverage
+
+# Configs
 .eslintrc.cjs
+
+# js file used mainly for isolating pieces of code and console logging
+playground.js
