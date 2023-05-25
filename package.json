@@ -11,6 +11,7 @@
     "coverage": "vitest run --coverage"
   },
   "devDependencies": {
+    "@vitest/coverage-c8": "^0.31.1",
     "eslint": "^8.41.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.27.5",
