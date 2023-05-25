@@ -6,7 +6,7 @@ import {
   beforeEach,
   vitest,
 } from 'vitest';
-import fetchData from '../data/fetchData';
+import fetchData from '../src/data/fetchData';
 
 describe('fetchData', () => {
   beforeEach(() => {
