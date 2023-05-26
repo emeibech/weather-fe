@@ -1,16 +1,13 @@
 import fetchData from './fetchData';
 
-const getCoordinates = async () => {
+const getCity = async () => {
   try {
     const data = await fetchData('https://emeibechserver.com/ipgeo');
-    return {
-      lat: data.latitude,
-      lon: data.longitude,
-    };
+    return data.city;
   } catch (error) {
     console.error(error);
     return null;
   }
 };
 
-export default getCoordinates;
+export default getCity;
