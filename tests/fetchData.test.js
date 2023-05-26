@@ -1,46 +1,34 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
-import {
-  describe,
-  it,
-  expect,
-  beforeEach,
-  vitest,
-} from 'vitest';
+// eslint-disable-next-line object-curly-newline
+import { describe, it, expect, beforeEach, vitest } from 'vitest';
 import fetchData from '../src/data/fetchData';
 
 describe('fetchData', () => {
-  beforeEach(() => {
-    vitest.resetAllMocks();
-  });
+  beforeEach(() => vitest.resetAllMocks());
 
-  it('fetches data from a given URL', async () => {
-    const url = 'https://fakeurl.com/api/data';
-    const expectedData = { data: 'Expected data' };
+  it('fetches data from a URL and returns the parsed JSON data', async () => {
+    // Mock the fetch function
+    global.fetch = vitest.fn().mockImplementation(() => Promise.resolve({
+      json: () => Promise.resolve({ message: 'Hello, World!' }),
+    }));
 
-    // Mocking the fetch function and the response
-    global.fetch = vitest.fn().mockResolvedValue({
-      json: vitest.fn().mockResolvedValue(expectedData),
-    });
-
+    const url = 'https://example.com/api/data';
     const data = await fetchData(url);
 
     expect(fetch).toHaveBeenCalledWith(url);
-    expect(data).toEqual(expectedData);
+    expect(data).toEqual({ message: 'Hello, World!' });
   });
 
-  it('handles errors and return the error object', async () => {
-    const url = 'https://fakeurl.com/api/data';
-    const expectedError = new Error('Request failed');
-
-    // Mocking the fetch function and causing an error
-    global.fetch = vitest.fn().mockRejectedValue(expectedError);
-
+  it('logs error and return null when fetching failed', async () => {
+    // Mock the fetch function to throw an error
+    const mockError = 'An error occurred while fetching data';
+    global.fetch = vitest.fn().mockRejectedValue(mockError);
     console.error = vitest.fn();
 
-    const error = await fetchData(url);
+    const url = 'https://example.com/api/data';
+    const data = await fetchData(url);
 
     expect(fetch).toHaveBeenCalledWith(url);
-    expect(console.error).toHaveBeenCalledWith(expectedError);
-    expect(error).toEqual(expectedError);
+    expect(console.error).toHaveBeenCalledWith(mockError);
+    expect(data).toBe(null);
   });
 });
