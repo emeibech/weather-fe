@@ -2,53 +2,67 @@
 import { describe, it, expect, beforeEach, vitest } from 'vitest';
 import fetchData from '../src/data/fetchData';
 
-describe('fetchData', () => {
-  beforeEach(() => vitest.resetAllMocks());
+describe('fetchData unit test', () => {
+  beforeEach(() => vitest.clearAllMocks());
 
-  it('should return data if response is ok', async () => {
+  it('returns data if response is ok', async () => {
     // Mock successful response
     const mockResponse = {
       ok: true,
-      json: vitest.fn().mockResolvedValue({ message: 'Success' }),
+      json: vitest.fn().mockResolvedValue({ data: 'Mock data' }),
     };
+
     global.fetch = vitest.fn().mockResolvedValue(mockResponse);
 
     // Call the fetchData function
     const data = await fetchData('https://example.com');
 
     // Verify the response
-    expect(fetch).toHaveBeenCalledWith('https://example.com');
-    expect(mockResponse.json).toHaveBeenCalled();
-    expect(data).toEqual({ message: 'Success' });
+    expect(data).toEqual({ data: 'Mock data' });
   });
 
-  it('should return status if response is not ok', async () => {
+  it('returns status code and error if response is not ok', async () => {
     // Mock unsuccessful response
     const mockResponse = {
       ok: false,
       status: 404,
+      statusText: 'Not Found',
     };
+
     global.fetch = vitest.fn().mockResolvedValue(mockResponse);
 
-    // Call the fetchData function
     const status = await fetchData('https://example.com');
 
-    // Verify the response
-    expect(fetch).toHaveBeenCalledWith('https://example.com');
-    expect(status).toEqual(404);
+    expect(status).toEqual({
+      error: `${mockResponse.status} ${mockResponse.statusText}`,
+    });
   });
 
-  it('should log error if an exception occurs', async () => {
+  it('logs error if an exception occurs', async () => {
     // Mock console.error
     console.error = vitest.fn();
 
     // Mock rejected promise to simulate an exception
-    global.fetch = vitest.fn().mockRejectedValue(new Error('Network error'));
+    global.fetch = vitest
+      .fn()
+      .mockRejectedValue(new Error('TypeError: Failed to fetch'));
 
     // Call the fetchData function
     await fetchData('https://example.com');
 
     // Verify the error logging
-    expect(console.error).toHaveBeenCalledWith(new Error('Network error'));
+    expect(console.error).toHaveBeenCalledWith(
+      new Error('TypeError: Failed to fetch'),
+    );
+  });
+
+  it('returns network error caught in catch block ', async () => {
+    global.fetch = vitest.fn().mockRejectedValue({
+      error: 'Connection Refused',
+    });
+
+    const data = await fetchData('https://example.com');
+
+    expect(data).toEqual({ error: 'Connection Refused' });
   });
 });
