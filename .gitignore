@@ -5,5 +5,5 @@ coverage
 # Configs
 .eslintrc.cjs
 
-# js file used mainly for isolating pieces of code and console logging
+# js file used mainly for building and testing complex functions
 playground.js
