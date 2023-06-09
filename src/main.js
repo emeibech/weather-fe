@@ -6,6 +6,7 @@ import './style.css';
 import header from './ui/header';
 import Location from './ui/Location';
 import CurrentWeather from './ui/CurrentWeather';
+import DailyForecast from './ui/DailyForecast';
 
 // const initialLoad = async () => {
 //   const ipInfo = await fetchClientCity();
@@ -26,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
   header();
   const location = Location({ parent, isLoading });
   const current = CurrentWeather({ isLoading, parent });
+  const daily = DailyForecast({ isLoading, parent });
 
-  console.log({ location, current });
+  console.log({ location, current, daily });
 });
