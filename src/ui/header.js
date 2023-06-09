@@ -1,7 +1,7 @@
 const header = () => {
   const parent = document.querySelector('#app');
   const headerContainer = document.createElement('header');
-  headerContainer.classList.add('my-4', 'cursor-pointer');
+  headerContainer.classList.add('mt-6');
 
   const div = document.createElement('div');
   div.classList.add(
@@ -10,6 +10,7 @@ const header = () => {
     'bg-fuchsia-700',
     'h-9',
     'w-9',
+    'cursor-pointer',
   );
 
   const h1 = document.createElement('h1');
