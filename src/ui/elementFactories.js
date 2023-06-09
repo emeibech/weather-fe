@@ -1,5 +1,8 @@
 const DivFactory = ({
-  isLoading, parent, name, style,
+  isLoading,
+  parent,
+  name,
+  style,
 }) => {
   const div = document.createElement('div');
   div.setAttribute('data-name', name);
@@ -20,7 +23,12 @@ const DivFactory = ({
 };
 
 const TextFactory = ({
-  isLoading, parent, name, text, type, style,
+  isLoading,
+  parent,
+  name,
+  text,
+  type,
+  style,
 }) => {
   const textElement = document.createElement(type);
   textElement.setAttribute('data-name', name);
@@ -41,7 +49,11 @@ const TextFactory = ({
 };
 
 const ImgFactory = ({
-  isLoading, parent, name, src, style,
+  isLoading,
+  parent,
+  name,
+  src,
+  style,
 }) => {
   const img = document.createElement('img');
   img.setAttribute('data-name', name);
@@ -61,4 +73,46 @@ const ImgFactory = ({
   };
 };
 
-export { DivFactory, TextFactory, ImgFactory };
+const MoreInfoFactory = ({
+  isLoading,
+  parent,
+  property,
+  value,
+}) => {
+  const container = DivFactory({
+    isLoading,
+    parent,
+    name: 'infoContainer',
+    style: 'flex flex-row justify-between border-b py-1',
+  });
+
+  const propertyText = TextFactory({
+    isLoading,
+    parent: container.div,
+    name: 'property',
+    text: property,
+    type: 'p',
+    style: 'opacity-75',
+  });
+
+  const valueText = TextFactory({
+    isLoading,
+    parent: container.div,
+    name: 'value',
+    text: value,
+    type: 'p',
+    style: 'opacity-75',
+  });
+
+  return {
+    propertyText,
+    valueText,
+  };
+};
+
+export {
+  DivFactory,
+  TextFactory,
+  ImgFactory,
+  MoreInfoFactory,
+};
