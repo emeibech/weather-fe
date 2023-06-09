@@ -4,7 +4,7 @@ import {
   ImgFactory,
   MoreInfoFactory,
 } from './elementFactories';
-import icons from '../assets/svgs/icons/icons';
+import icons from '../assets/icons/icons';
 
 const CurrentWeather = ({ isLoading, parent }) => {
   // Parent container for current weather
@@ -70,22 +70,15 @@ const CurrentWeather = ({ isLoading, parent }) => {
     const feelsLike = MoreInfoFactory({
       isLoading,
       parent: moreInfoDiv.div,
-      property: 'Feels like',
+      property: 'Feels Like',
       value: '26°C',
     });
 
     const chanceOfRain = MoreInfoFactory({
       isLoading,
       parent: moreInfoDiv.div,
-      property: 'Chance of rain',
+      property: 'Chance of Rain',
       value: '74%',
-    });
-
-    const humidity = MoreInfoFactory({
-      isLoading,
-      parent: moreInfoDiv.div,
-      property: 'Humidity',
-      value: '89%',
     });
 
     const windSpeed = MoreInfoFactory({
@@ -102,11 +95,46 @@ const CurrentWeather = ({ isLoading, parent }) => {
       value: 'WNW',
     });
 
+    const humidity = MoreInfoFactory({
+      isLoading,
+      parent: moreInfoDiv.div,
+      property: 'Humidity',
+      value: '89%',
+    });
+
+    const uvi = MoreInfoFactory({
+      isLoading,
+      parent: moreInfoDiv.div,
+      property: 'UV Index',
+      value: '4 Moderate',
+    });
+
     const cloudCover = MoreInfoFactory({
       isLoading,
       parent: moreInfoDiv.div,
       property: 'Cloud cover',
       value: '40%',
+    });
+
+    const visibility = MoreInfoFactory({
+      isLoading,
+      parent: moreInfoDiv.div,
+      property: 'Visibility',
+      value: '10 km',
+    });
+
+    const sunrise = MoreInfoFactory({
+      isLoading,
+      parent: moreInfoDiv.div,
+      property: 'Sunrise',
+      value: '05:26 AM',
+    });
+
+    const sunset = MoreInfoFactory({
+      isLoading,
+      parent: moreInfoDiv.div,
+      property: 'Sunset',
+      value: '06:21 PM',
     });
 
     return {
@@ -117,6 +145,10 @@ const CurrentWeather = ({ isLoading, parent }) => {
       windSpeed,
       windDirection,
       cloudCover,
+      uvi,
+      visibility,
+      sunrise,
+      sunset,
     };
   })();
 
