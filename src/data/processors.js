@@ -9,11 +9,22 @@ const capitalize = (str) => str
 
 const completeUVI = (uvi) => {
   const roundedUvi = Math.round((uvi * 100) / 100);
-  if (roundedUvi < 3) return `${roundedUvi} Low`;
-  if (roundedUvi < 6 && roundedUvi > 2) return `${roundedUvi} Moderate`;
-  if (roundedUvi < 8 && roundedUvi > 5) return `${roundedUvi} High`;
-  if (roundedUvi < 11 && roundedUvi > 7) return `${roundedUvi} Very High`;
-  return `${roundedUvi} Extreme`;
+  const uviScale = [
+    'Low',
+    'Low',
+    'Low',
+    'Moderate',
+    'Moderate',
+    'Moderate',
+    'High',
+    'High',
+    'Very High',
+    'Very High',
+    'Very High',
+  ];
+
+  if (roundedUvi > 10) return `${roundedUvi} Extreme`;
+  return `${roundedUvi} ${uviScale[roundedUvi]}`;
 };
 
 const getDay = (unix) => {
