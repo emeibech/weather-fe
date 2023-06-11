@@ -21,13 +21,20 @@ import DailyForecast from './ui/DailyForecast';
 // };
 
 document.addEventListener('DOMContentLoaded', () => {
-  const parent = document.querySelector('#app');
+  const app = document.querySelector('#app');
   const isLoading = false;
 
   header();
-  const location = Location({ parent, isLoading });
-  const current = CurrentWeather({ isLoading, parent });
-  const daily = DailyForecast({ isLoading, parent });
+  const location = Location({ isLoading, app });
+  const current = CurrentWeather({
+    isLoading,
+    parent: location.main.parent,
+  });
+
+  const daily = DailyForecast({
+    isLoading,
+    parent: location.main.parent,
+  });
 
   console.log({ location, current, daily });
 });
