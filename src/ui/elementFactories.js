@@ -173,14 +173,6 @@ const DailySummary = ({
     };
   })();
 
-  // const expandImg = ImgFactory({
-  //   isLoading,
-  //   parent: dailyDiv.div,
-  //   name: 'expand',
-  //   src: expand,
-  //   style: 'w-8 h-8 row-span-2 place-self-center',
-  // });
-
   const dayTemp = TextFactory({
     isLoading,
     parent: dailyDiv.div,
