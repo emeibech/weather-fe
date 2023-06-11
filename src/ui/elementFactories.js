@@ -1,5 +1,4 @@
 import icons from '../assets/icons/icons';
-import expand from '../assets/svgs/expand.svg';
 
 const DivFactory = ({
   isLoading,
@@ -120,14 +119,12 @@ const DailySummary = ({
   icon,
   tempDay,
   tempNight,
-  feelsLikeDay,
-  feelsLikeNight,
 }) => {
   const dailyDiv = DivFactory({
     isLoading,
     parent,
-    name: 'dailyDiv',
-    style: 'border cursor-pointer rounded-lg min-w-full',
+    name: day,
+    style: 'border-t border-b rounded min-w-full gap-y-2',
   });
 
   const dayText = TextFactory({
@@ -135,8 +132,8 @@ const DailySummary = ({
     parent: dailyDiv.div,
     name: 'day',
     text: day,
-    type: 'p',
-    style: 'text-xl',
+    type: 'h3',
+    style: 'text-lg',
   });
 
   const iconImg = ImgFactory({
@@ -144,78 +141,71 @@ const DailySummary = ({
     parent: dailyDiv.div,
     name: 'icon',
     src: icons[icon],
-    style: 'w-12 h-12',
+    style: 'w-8 h-8',
   });
 
-  const expandImg = ImgFactory({
-    isLoading,
-    parent: dailyDiv.div,
-    name: 'expand',
-    src: expand,
-    style: 'w-8 h-8 row-span-2 justify-self-end self-center',
-  });
+  const expandSvg = (() => {
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute('fill', 'rgb(120,120,120)');
+    svg.setAttribute('height', '48');
+    svg.setAttribute('width', '48');
+    svg.setAttribute('viewBox', '0 -960 960 960');
 
-  const dayTempDiv = DivFactory({
-    isLoading,
-    parent: dailyDiv.div,
-    name: 'dayTempDiv',
-    style: 'flex flex-col',
-  });
+    const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    path.setAttribute(
+      'd',
+      'M480-357q-6 0-11-2t-10-7L261-564q-8-8-7.5-21.5T262-607q10-10 21.5-8.5T304-606l176 176 176-176q8-8 21.5-9t21.5 9q10 8 8.5 21t-9.5 22L501-366q-5 5-10 7t-11 2Z',
+    );
+
+    svg.appendChild(path);
+
+    if (!isLoading) {
+      svg.classList.add('w-8', 'h-8', 'row-span-2', 'place-self-center');
+    }
+
+    dailyDiv.div.appendChild(svg);
+
+    const removeElement = () => dailyDiv.div.removeChild(svg);
+
+    return {
+      svg,
+      removeElement,
+    };
+  })();
+
+  // const expandImg = ImgFactory({
+  //   isLoading,
+  //   parent: dailyDiv.div,
+  //   name: 'expand',
+  //   src: expand,
+  //   style: 'w-8 h-8 row-span-2 place-self-center',
+  // });
 
   const dayTemp = TextFactory({
     isLoading,
-    parent: dayTempDiv.div,
-    name: 'dayTemp',
-    text: tempDay,
-    type: 'p',
-    style: 'opacity-75 text-sm',
-  });
-
-  const dayFeelsLike = TextFactory({
-    isLoading,
-    parent: dayTempDiv.div,
-    name: 'dayFeelsLike',
-    text: feelsLikeDay,
-    type: 'p',
-    style: 'opacity-75 text-sm',
-  });
-
-  const nightTempDiv = DivFactory({
-    isLoading,
     parent: dailyDiv.div,
-    name: 'nightTempDiv',
-    style: 'flex flex-col',
+    name: 'dayTemp',
+    text: `Day: ${tempDay}`,
+    type: 'p',
+    style: 'opacity-75 text-sm tracking-wide',
   });
 
   const nightTemp = TextFactory({
     isLoading,
-    parent: nightTempDiv.div,
+    parent: dailyDiv.div,
     name: 'nightTemp',
-    text: tempNight,
+    text: `Night: ${tempNight}`,
     type: 'p',
-    style: 'opacity-75 text-sm',
-  });
-
-  const nightFeelsLike = TextFactory({
-    isLoading,
-    parent: nightTempDiv.div,
-    name: 'nightFeelsLike',
-    text: feelsLikeNight,
-    type: 'p',
-    style: 'opacity-75 text-sm',
+    style: 'opacity-75 text-sm tracking-wide',
   });
 
   return {
     dailyDiv,
     dayText,
     iconImg,
-    expandImg,
-    dayTempDiv,
+    expandSvg,
     dayTemp,
-    dayFeelsLike,
-    nightTempDiv,
     nightTemp,
-    nightFeelsLike,
   };
 };
 
