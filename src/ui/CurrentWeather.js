@@ -7,19 +7,30 @@ import {
 import icons from '../assets/icons/icons';
 
 const CurrentWeather = ({ isLoading, parent }) => {
-  // Parent container for current weather
-  const currentWeatherDiv = DivFactory({
-    isLoading,
-    parent,
-    name: 'currentWeatherDiv',
-    style: 'flex flex-col gap-y-16',
-  });
+  const currentWeatherSection = (() => {
+    const section = document.createElement('section');
+    section.setAttribute('data-name', 'currentWeatherSection');
+
+    if (!isLoading) {
+      section.className = 'flex flex-col gap-y-12';
+    }
+
+    parent.appendChild(section);
+
+    const removeElement = () => parent.removeChild(section);
+
+    return {
+      section,
+      parent,
+      removeElement,
+    };
+  })();
 
   // Main info for current weather
   const main = (() => {
     const mainDiv = DivFactory({
       isLoading,
-      parent: currentWeatherDiv.div,
+      parent: currentWeatherSection.section,
       name: 'mainDiv',
       style: 'grid grid-cols-2 place-items-center',
     });
@@ -47,7 +58,7 @@ const CurrentWeather = ({ isLoading, parent }) => {
       name: 'description',
       text: 'Few Clouds',
       type: 'p',
-      style: 'text-xl col-span-2 mt-8',
+      style: 'text-xl col-span-2 mt-6',
     });
 
     return {
@@ -62,7 +73,7 @@ const CurrentWeather = ({ isLoading, parent }) => {
   const moreInfo = (() => {
     const moreInfoDiv = DivFactory({
       isLoading,
-      parent: currentWeatherDiv.div,
+      parent: currentWeatherSection.section,
       name: 'moreInfoDiv',
       style: 'grid gap-y-2',
     });
