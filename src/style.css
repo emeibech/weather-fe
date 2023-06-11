@@ -32,9 +32,9 @@ body {
   max-width: 1280px;
   margin: 0 auto;
   display: flex;
-  gap: 2rem;
   flex-direction: column;
   padding-inline: 1vh;
+  gap: 2rem;
 }
 
 button {
@@ -70,11 +70,24 @@ header div:active {
   border-color: rgba(255, 255, 255, 0.1);
 }
 
-[data-name="dailyDiv"] {
+[data-name="dailyForecastSection"] div {
   display: grid;
-  grid-template-columns: 1fr 1fr 32px;
-  background-color: #1a1a1a;
-  border-color: rgba(255, 255, 255, 0.1);
-  padding: 1rem;
-  margin-block: 1rem;
+  grid-template-columns: 1fr 1fr 48px;
+  background-color: rgba(60, 60, 60, 0.25);
+  border-color: rgba(80, 80, 80, 0.25);
+  padding: 0.75rem;
+  column-gap: 1rem;
+  cursor: pointer;
+  margin-block: 0.25rem;
+}
+
+[data-name="dailyForecastSection"] div:hover,
+[data-name="dailyForecastSection"] div:active {
+  background-color: rgba(100, 100, 100, 0.25);
+}
+
+[data-name="main"] {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
