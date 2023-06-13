@@ -7,6 +7,7 @@ import header from './ui/header';
 import Location from './ui/Location';
 import CurrentWeather from './ui/CurrentWeather';
 import DailyForecast from './ui/DailyForecast';
+import handleClickDaily from './events/handleClickDaily';
 
 // const initialLoad = async () => {
 //   const ipInfo = await fetchClientCity();
@@ -36,5 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
     parent: location.main.parent,
   });
 
-  console.log({ location, current, daily });
+  handleClickDaily(daily);
+
+  // console.log({ location, current, daily });
 });
