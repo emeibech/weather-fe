@@ -24,6 +24,30 @@ const DivFactory = ({
   };
 };
 
+const SectionFactory = ({
+  isLoading,
+  parent,
+  name,
+  style,
+}) => {
+  const section = document.createElement('section');
+  section.setAttribute('data-name', name);
+
+  if (!isLoading) {
+    section.className = style;
+  }
+
+  parent.appendChild(section);
+
+  const removeElement = () => parent.removeChild(section);
+
+  return {
+    section,
+    parent,
+    removeElement,
+  };
+};
+
 const TextFactory = ({
   isLoading,
   parent,
@@ -165,11 +189,8 @@ const DailySummary = ({
 
     dailyDiv.div.appendChild(svg);
 
-    const removeElement = () => dailyDiv.div.removeChild(svg);
-
     return {
       svg,
-      removeElement,
     };
   })();
 
@@ -203,6 +224,7 @@ const DailySummary = ({
 
 export {
   DivFactory,
+  SectionFactory,
   TextFactory,
   ImgFactory,
   MoreInfoFactory,
