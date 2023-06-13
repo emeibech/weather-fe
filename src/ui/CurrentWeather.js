@@ -2,9 +2,9 @@ import {
   DivFactory,
   TextFactory,
   ImgFactory,
-  MoreInfoFactory,
   SectionFactory,
 } from './elementFactories';
+import MoreInfo from './MoreInfo';
 import icons from '../assets/icons/icons';
 
 const CurrentWeather = ({ isLoading, parent }) => {
@@ -67,70 +67,70 @@ const CurrentWeather = ({ isLoading, parent }) => {
       style: 'grid gap-y-2',
     });
 
-    const feelsLike = MoreInfoFactory({
+    const feelsLike = MoreInfo({
       isLoading,
       parent: moreInfoDiv.div,
       property: 'Feels Like',
       value: '26°C',
     });
 
-    const chanceOfRain = MoreInfoFactory({
+    const chanceOfRain = MoreInfo({
       isLoading,
       parent: moreInfoDiv.div,
       property: 'Chance of Rain',
       value: '74%',
     });
 
-    const windSpeed = MoreInfoFactory({
+    const windSpeed = MoreInfo({
       isLoading,
       parent: moreInfoDiv.div,
       property: 'Wind Speed',
       value: '8 km/h',
     });
 
-    const windDirection = MoreInfoFactory({
+    const windDirection = MoreInfo({
       isLoading,
       parent: moreInfoDiv.div,
       property: 'Wind Direction',
       value: 'WNW',
     });
 
-    const humidity = MoreInfoFactory({
+    const humidity = MoreInfo({
       isLoading,
       parent: moreInfoDiv.div,
       property: 'Humidity',
       value: '89%',
     });
 
-    const uvi = MoreInfoFactory({
+    const uvi = MoreInfo({
       isLoading,
       parent: moreInfoDiv.div,
       property: 'UV Index',
       value: '4 Moderate',
     });
 
-    const cloudCover = MoreInfoFactory({
+    const cloudCover = MoreInfo({
       isLoading,
       parent: moreInfoDiv.div,
       property: 'Cloud cover',
       value: '40%',
     });
 
-    const visibility = MoreInfoFactory({
+    const visibility = MoreInfo({
       isLoading,
       parent: moreInfoDiv.div,
       property: 'Visibility',
       value: '10 km',
     });
 
-    const sunrise = MoreInfoFactory({
+    const sunrise = MoreInfo({
       isLoading,
       parent: moreInfoDiv.div,
       property: 'Sunrise',
       value: '05:26 AM',
     });
 
-    const sunset = MoreInfoFactory({
+    const sunset = MoreInfo({
       isLoading,
       parent: moreInfoDiv.div,
       property: 'Sunset',

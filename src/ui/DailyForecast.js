@@ -1,8 +1,5 @@
-import {
-  SectionFactory,
-  TextFactory,
-  DailySummary,
-} from './elementFactories';
+import { SectionFactory, TextFactory } from './elementFactories';
+import DailySummary from './DailySummary';
 
 const DailyForecast = ({ isLoading, parent }) => {
   const dailyForecastSection = SectionFactory({
