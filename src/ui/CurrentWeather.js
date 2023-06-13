@@ -3,28 +3,17 @@ import {
   TextFactory,
   ImgFactory,
   MoreInfoFactory,
+  SectionFactory,
 } from './elementFactories';
 import icons from '../assets/icons/icons';
 
 const CurrentWeather = ({ isLoading, parent }) => {
-  const currentWeatherSection = (() => {
-    const section = document.createElement('section');
-    section.setAttribute('data-name', 'currentWeatherSection');
-
-    if (!isLoading) {
-      section.className = 'flex flex-col gap-y-12';
-    }
-
-    parent.appendChild(section);
-
-    const removeElement = () => parent.removeChild(section);
-
-    return {
-      section,
-      parent,
-      removeElement,
-    };
-  })();
+  const currentWeatherSection = SectionFactory({
+    parent,
+    isLoading,
+    name: 'currentWeatherSection',
+    style: 'flex flex-col gap-y-12',
+  });
 
   // Main info for current weather
   const main = (() => {
