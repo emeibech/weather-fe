@@ -212,6 +212,16 @@ const DailySummary = ({
     style: 'opacity-75 text-sm tracking-wide',
   });
 
+  const removeFromDom = () => parent.removeChild(dailyDiv.div);
+  const render = (nextSibling) => {
+    parent.insertBefore(dailyDiv.div, nextSibling);
+    dailyDiv.div.classList.add('expanded');
+    setTimeout(() => {
+      dailyDiv.div.classList.remove('expanded');
+      dailyDiv.div.classList.add('collapsed');
+    }, 0);
+  };
+
   return {
     dailyDiv,
     dayText,
@@ -219,6 +229,8 @@ const DailySummary = ({
     expandSvg,
     dayTemp,
     nightTemp,
+    removeFromDom,
+    render,
   };
 };
 
