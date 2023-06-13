@@ -1,28 +1,16 @@
 import {
-  // DivFactory,
+  SectionFactory,
   TextFactory,
   DailySummary,
 } from './elementFactories';
 
 const DailyForecast = ({ isLoading, parent }) => {
-  const dailyForecastSection = (() => {
-    const section = document.createElement('section');
-    section.setAttribute('data-name', 'dailyForecastSection');
-
-    if (!isLoading) {
-      section.className = 'flex flex-col place-items-center';
-    }
-
-    parent.appendChild(section);
-
-    const removeElement = () => parent.removeChild(section);
-
-    return {
-      section,
-      parent,
-      removeElement,
-    };
-  })();
+  const dailyForecastSection = SectionFactory({
+    parent,
+    isLoading,
+    name: 'dailyForecastSection',
+    style: 'flex flex-col place-items-center',
+  });
 
   const daily = TextFactory({
     isLoading,
