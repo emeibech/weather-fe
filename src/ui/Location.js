@@ -1,6 +1,11 @@
 import { TextFactory } from './elementFactories';
 
-const Location = ({ isLoading, app }) => {
+const Location = ({
+  isLoading,
+  app,
+  city,
+  country,
+}) => {
   const main = (() => {
     const parent = document.createElement('main');
     parent.setAttribute('data-name', 'main');
@@ -19,7 +24,7 @@ const Location = ({ isLoading, app }) => {
     isLoading,
     parent: main.parent,
     name: 'location',
-    text: 'Tokyo, Japan',
+    text: `${city}, ${country}`,
     type: 'h2',
     style: 'text-lg text-left px-8',
   });
