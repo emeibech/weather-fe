@@ -1,7 +1,6 @@
 import { TextFactory } from './elementFactories';
 
 const Location = ({
-  isLoading,
   app,
   city,
   country,
@@ -21,7 +20,6 @@ const Location = ({
   })();
 
   const location = TextFactory({
-    isLoading,
     parent: main.parent,
     name: 'location',
     text: `${city}, ${country}`,

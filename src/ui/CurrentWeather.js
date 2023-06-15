@@ -7,10 +7,9 @@ import {
 import MoreInfo from './MoreInfo';
 import icons from '../assets/icons/icons';
 
-const CurrentWeather = ({ isLoading, parent, data }) => {
+const CurrentWeather = ({ parent, data }) => {
   const currentWeatherSection = SectionFactory({
     parent,
-    isLoading,
     name: 'currentWeatherSection',
     style: 'flex flex-col gap-y-12',
   });
@@ -18,14 +17,12 @@ const CurrentWeather = ({ isLoading, parent, data }) => {
   // Main info for current weather
   const main = (() => {
     const mainDiv = DivFactory({
-      isLoading,
       parent: currentWeatherSection.section,
       name: 'mainDiv',
       style: 'grid grid-cols-2 place-items-center',
     });
 
     const icon = ImgFactory({
-      isLoading,
       parent: mainDiv.div,
       name: 'icon',
       src: icons[data.icon],
@@ -33,7 +30,6 @@ const CurrentWeather = ({ isLoading, parent, data }) => {
     });
 
     const temp = TextFactory({
-      isLoading,
       parent: mainDiv.div,
       name: 'temp',
       text: data.temp,
@@ -42,7 +38,6 @@ const CurrentWeather = ({ isLoading, parent, data }) => {
     });
 
     const description = TextFactory({
-      isLoading,
       parent: mainDiv.div,
       name: 'description',
       text: data.description,
@@ -61,77 +56,66 @@ const CurrentWeather = ({ isLoading, parent, data }) => {
   // More info for current weather
   const moreInfo = (() => {
     const moreInfoDiv = DivFactory({
-      isLoading,
       parent: currentWeatherSection.section,
       name: 'moreInfoDiv',
       style: 'grid gap-y-2',
     });
 
     const feelsLike = MoreInfo({
-      isLoading,
       parent: moreInfoDiv.div,
       property: 'Feels Like',
       value: data.feelsLike,
     });
 
     const chanceOfRain = MoreInfo({
-      isLoading,
       parent: moreInfoDiv.div,
       property: 'Chance of Rain',
       value: data.pop,
     });
 
     const windSpeed = MoreInfo({
-      isLoading,
       parent: moreInfoDiv.div,
       property: 'Wind Speed',
       value: data.windSpeed,
     });
 
     const windDirection = MoreInfo({
-      isLoading,
       parent: moreInfoDiv.div,
       property: 'Wind Direction',
       value: data.windDeg,
     });
 
     const humidity = MoreInfo({
-      isLoading,
       parent: moreInfoDiv.div,
       property: 'Humidity',
       value: data.humidity,
     });
 
     const uvi = MoreInfo({
-      isLoading,
       parent: moreInfoDiv.div,
       property: 'UV Index',
       value: data.uvi,
     });
 
     const cloudCover = MoreInfo({
-      isLoading,
       parent: moreInfoDiv.div,
       property: 'Cloud cover',
       value: data.clouds,
     });
 
     const visibility = MoreInfo({
-      isLoading,
       parent: moreInfoDiv.div,
       property: 'Visibility',
       value: data.visibility,
     });
 
     const sunrise = MoreInfo({
-      isLoading,
       parent: moreInfoDiv.div,
       property: 'Sunrise',
       value: data.sunrise,
     });
 
     const sunset = MoreInfo({
-      isLoading,
       parent: moreInfoDiv.div,
       property: 'Sunset',
       value: data.sunset,
