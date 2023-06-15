@@ -35,26 +35,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Instantiate and render location
   const location = Location({
-    isLoading,
     app,
     city: 'Tokyo',
     country: 'Japan',
   });
   // Instantiate and render current weather
   const current = CurrentWeather({
-    isLoading,
     parent: location.main.parent,
     data: data.metric.current,
   });
   // Instantiate and render daily forecast
   const daily = DailyForecast({
-    isLoading,
     parent: location.main.parent,
     data: data.metric.daily,
   });
 
   // handle click events on daily forecast
-  handleClickDaily(daily);
+  handleClickDaily({
+    dailyArr: daily.dailyArr,
+    data: data.metric.daily,
+  });
 
   if (isLoading) console.log(current);
 });
