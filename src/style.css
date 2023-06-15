@@ -76,7 +76,7 @@ header div:active {
   border-color: rgba(255, 255, 255, 0.1);
 }
 
-[data-name="dailyForecastSection"] div {
+[data-name="dailyForecastSection"] > div {
   display: grid;
   grid-template-columns: 1fr 1fr 48px;
   background-color: rgba(60, 60, 60, 0.25);
@@ -87,23 +87,28 @@ header div:active {
   margin-block: 0.25rem;
 }
 
-[data-name="dailyForecastSection"] div:hover,
-[data-name="dailyForecastSection"] div:active {
+[data-name="dailyForecastSection"] > div:hover,
+[data-name="dailyForecastSection"] > div:active,
+[data-name="dailyForecastSection"] > section:hover,
+[data-name="dailyForecastSection"] > section:active {
   background-color: rgba(100, 100, 100, 0.25);
 }
 
-[data-name="dailyForecastSection"] section {
+[data-name="dailyForecastSection"] > section {
   background-color: rgba(60, 60, 60, 0.25);
   border-color: rgba(80, 80, 80, 0.25);
   margin-block: 0.25rem;
 }
 
-.collapsed {
-  height: 86px;
-  transition: all 250ms ease-in-out;
+[data-collapsed="false"] { min-height: 222px }
+[data-expanded="false"] { max-height: 86px }
+
+[data-collapsed="true"] {
+  min-height: 86px;
+  transition: min-height 250ms;
 }
 
-.expanded {
-  height: 300px;
-  transition: all 250ms ease-in-out;
+[data-expanded="true"] {
+  max-height: 222px;
+  transition: max-height 250ms;
 }
