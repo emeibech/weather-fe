@@ -78,8 +78,8 @@ header div:active {
 
 [data-name="dailyForecastSection"] > div {
   display: grid;
-  grid-template-columns: 1fr 1fr 48px;
-  background-color: rgba(60, 60, 60, 0.25);
+  grid-template-columns: 1fr 1fr 24px;
+  background-color: rgba(40, 40, 40, 0.25);
   border-color: rgba(80, 80, 80, 0.25);
   padding: 0.75rem;
   column-gap: 1rem;
@@ -91,24 +91,33 @@ header div:active {
 [data-name="dailyForecastSection"] > div:active,
 [data-name="dailyForecastSection"] > section:hover,
 [data-name="dailyForecastSection"] > section:active {
-  background-color: rgba(100, 100, 100, 0.25);
+  background-color: rgba(50, 50, 50, 0.25);
 }
 
 [data-name="dailyForecastSection"] > section {
-  background-color: rgba(60, 60, 60, 0.25);
+  display: grid;
+  grid-template-columns: 1fr 24px;
+  grid-template-rows: 60px 1fr;
+  background-color: rgba(40, 40, 40, 0.25);
   border-color: rgba(80, 80, 80, 0.25);
   margin-block: 0.25rem;
+  overflow: hidden;
 }
 
-[data-collapsed="false"] { min-height: 222px }
-[data-expanded="false"] { max-height: 86px }
+[data-name="summaryText"] {
+  max-width: 32ch;
+  text-align: center;
+}
+
+[data-collapsed="false"] { min-height: 750px }
+[data-expanded="false"] { max-height: 86px; }
 
 [data-collapsed="true"] {
   min-height: 86px;
-  transition: min-height 250ms;
+  transition: min-height 250ms ease-out;
 }
 
 [data-expanded="true"] {
-  max-height: 222px;
-  transition: max-height 250ms;
+  max-height: 750px;
+  transition: all 250ms ease-out;
 }
