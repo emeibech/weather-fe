@@ -1,20 +1,17 @@
 import { DivFactory, TextFactory } from './elementFactories';
 
 const MoreInfo = ({
-  isLoading,
   parent,
   property,
   value,
 }) => {
   const container = DivFactory({
-    isLoading,
     parent,
     name: 'infoContainer',
     style: 'flex flex-row justify-between border-b py-1',
   });
 
   const propertyText = TextFactory({
-    isLoading,
     parent: container.div,
     name: 'property',
     text: property,
@@ -23,7 +20,6 @@ const MoreInfo = ({
   });
 
   const valueText = TextFactory({
-    isLoading,
     parent: container.div,
     name: 'value',
     text: value,
