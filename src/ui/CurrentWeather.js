@@ -58,7 +58,7 @@ const CurrentWeather = ({ parent, data }) => {
     const moreInfoDiv = DivFactory({
       parent: currentWeatherSection.section,
       name: 'moreInfoDiv',
-      style: 'grid gap-y-2',
+      style: 'grid gap-y-2 px-2',
     });
 
     const feelsLike = MoreInfo({
