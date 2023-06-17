@@ -33,20 +33,35 @@ document.addEventListener('DOMContentLoaded', () => {
   // Render header
   header();
 
+  // Render main element
+  const main = (() => {
+    const mainElement = document.createElement('main');
+    mainElement.setAttribute('data-name', 'main');
+
+    app.appendChild(mainElement);
+
+    const removeElement = () => mainElement.removeChild(mainElement);
+
+    return {
+      mainElement,
+      removeElement,
+    };
+  })();
+
   // Instantiate and render location
   const location = Location({
-    app,
+    parent: main.mainElement,
     city: 'Tokyo',
     country: 'Japan',
   });
   // Instantiate and render current weather
   const current = CurrentWeather({
-    parent: location.main.parent,
+    parent: main.mainElement,
     data: data.metric.current,
   });
   // Instantiate and render daily forecast
   const daily = DailyForecast({
-    parent: location.main.parent,
+    parent: main.mainElement,
     data: data.metric.daily,
   });
 
@@ -56,5 +71,5 @@ document.addEventListener('DOMContentLoaded', () => {
     data: data.metric.daily,
   });
 
-  if (isLoading) console.log(current);
+  if (isLoading) console.log(current, location);
 });
