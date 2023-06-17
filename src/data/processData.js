@@ -77,7 +77,7 @@ const processData = (data) => {
         feelsLike: toFahrenheit(data.current.temp),
         windSpeed: `${Math.round(data.current.windSpeed * 2.2369)} mph`,
         visibility: `${Math.round(
-          (current.visibility / 1000) * 0.62137119,
+          (data.current.visibility / 1000) * 0.62137119,
         )} mi`,
       },
       daily: getDaily('imperial'),

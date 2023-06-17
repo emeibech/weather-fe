@@ -347,7 +347,7 @@ describe('processData unit test', () => {
           windDeg: 'W',
           humidity: '86%',
           uvi: '0 Low',
-          visibility: 'NaN mi',
+          visibility: '6 mi',
           clouds: '20%',
           sunrise: '05:26 AM',
           sunset: '06:21 PM',
