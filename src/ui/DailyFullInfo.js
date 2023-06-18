@@ -34,10 +34,10 @@ const DailyFullInfo = ({
   const collapseSvg = SvgFactory({
     parent: fullInfoSection.section,
     name: 'collapseSvg',
-    pathValue: 'M480-357q-6 0-11-2t-10-7L261-564q-8-8-7.5-21.5T262-607q10-10 21.5-8.5T304-606l176 176 176-176q8-8 21.5-9t21.5 9q10 8 8.5 21t-9.5 22L501-366q-5 5-10 7t-11 2Z',
+    pathValue: 'M262-367q-9-9-9.5-21t8.5-21l198-198q5-5 10-7t11-2q6 0 11 2t10 7l198 197q9 8 9 20.5t-9 21.5q-9 9-21.5 9t-21.5-9L480-543 304-366q-8 9-20.5 8.5T262-367Z',
     width: '48',
     height: '48',
-    style: 'w-6 h-6 place-self-center rotate-180',
+    style: 'w-6 h-6 place-self-center',
   });
 
   const main = (() => {
@@ -65,9 +65,9 @@ const DailyFullInfo = ({
     const summaryText = TextFactory({
       parent: mainDiv.div,
       name: 'summaryText',
-      text: data.summary,
+      text: `${data.summary}.`,
       type: 'p',
-      style: 'text-sm mt-2',
+      style: 'text-zinc-300 text-sm mt-2',
     });
 
     const temperature = DivFactory({
@@ -135,7 +135,7 @@ const DailyFullInfo = ({
       name: 'feelsLikeDay',
       text: `Feels Like ${data.feelsLikeDay}`,
       type: 'p',
-      style: 'text-sm opacity-50',
+      style: 'text-sm text-zinc-400',
     });
 
     const feelsLikeNight = TextFactory({
@@ -143,13 +143,13 @@ const DailyFullInfo = ({
       name: 'feelsLikeNight',
       text: `Feels Like ${data.feelsLikeNight}`,
       type: 'p',
-      style: 'text-sm opacity-50',
+      style: 'text-sm text-zinc-400',
     });
 
     const extra = DivFactory({
       parent: mainDiv.div,
       name: 'extra',
-      style: 'grid gap-y-2 mt-12 mb-4 min-w-full px-6',
+      style: 'grid gap-y-2 mt-12 mb-6 min-w-full px-6',
     });
 
     const chanceOfRain = MoreInfo({

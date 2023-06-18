@@ -7,7 +7,7 @@ import {
 import MoreInfo from './MoreInfo';
 import icons from '../assets/icons/icons';
 
-const CurrentWeather = ({ parent, data }) => {
+const CurrentWeather = ({ parent, metric, imperial }) => {
   const currentWeatherSection = SectionFactory({
     parent,
     name: 'currentWeatherSection',
@@ -25,22 +25,23 @@ const CurrentWeather = ({ parent, data }) => {
     const icon = ImgFactory({
       parent: mainDiv.div,
       name: 'icon',
-      src: icons[data.icon],
+      src: icons[metric.icon],
       style: 'h-20 w-20',
     });
 
     const temp = TextFactory({
       parent: mainDiv.div,
       name: 'temp',
-      text: data.temp,
+      text: metric.temp,
       type: 'p',
       style: 'text-6xl',
+      imperial: imperial.temp,
     });
 
     const description = TextFactory({
       parent: mainDiv.div,
       name: 'description',
-      text: data.description,
+      text: metric.description,
       type: 'p',
       style: 'text-xl col-span-2 mt-6',
     });
@@ -58,67 +59,70 @@ const CurrentWeather = ({ parent, data }) => {
     const moreInfoDiv = DivFactory({
       parent: currentWeatherSection.section,
       name: 'moreInfoDiv',
-      style: 'grid gap-y-2 px-2',
+      style: 'grid gap-y-2 px-6',
     });
 
     const feelsLike = MoreInfo({
       parent: moreInfoDiv.div,
       property: 'Feels Like',
-      value: data.feelsLike,
+      value: metric.feelsLike,
+      imperial: imperial.feelsLike,
     });
 
     const chanceOfRain = MoreInfo({
       parent: moreInfoDiv.div,
       property: 'Chance of Rain',
-      value: data.pop,
+      value: metric.pop,
     });
 
     const windSpeed = MoreInfo({
       parent: moreInfoDiv.div,
       property: 'Wind Speed',
-      value: data.windSpeed,
+      value: metric.windSpeed,
+      imperial: imperial.windSpeed,
     });
 
     const windDirection = MoreInfo({
       parent: moreInfoDiv.div,
       property: 'Wind Direction',
-      value: data.windDeg,
+      value: metric.windDeg,
     });
 
     const humidity = MoreInfo({
       parent: moreInfoDiv.div,
       property: 'Humidity',
-      value: data.humidity,
+      value: metric.humidity,
     });
 
     const uvi = MoreInfo({
       parent: moreInfoDiv.div,
       property: 'UV Index',
-      value: data.uvi,
+      value: metric.uvi,
     });
 
     const cloudCover = MoreInfo({
       parent: moreInfoDiv.div,
       property: 'Cloud cover',
-      value: data.clouds,
+      value: metric.clouds,
     });
 
     const visibility = MoreInfo({
       parent: moreInfoDiv.div,
       property: 'Visibility',
-      value: data.visibility,
+      value: metric.visibility,
+      imperial: imperial.visibility,
     });
 
     const sunrise = MoreInfo({
       parent: moreInfoDiv.div,
       property: 'Sunrise',
-      value: data.sunrise,
+      value: metric.sunrise,
     });
 
     const sunset = MoreInfo({
       parent: moreInfoDiv.div,
       property: 'Sunset',
-      value: data.sunset,
+      value: metric.sunset,
     });
 
     return {
@@ -137,8 +141,13 @@ const CurrentWeather = ({ parent, data }) => {
   })();
 
   return {
-    main,
-    moreInfo,
+    currentWeatherSection,
+    variableUnits: [
+      main.temp,
+      moreInfo.feelsLike.valueText,
+      moreInfo.windSpeed.valueText,
+      moreInfo.visibility.valueText,
+    ],
   };
 };
 

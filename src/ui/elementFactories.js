@@ -33,10 +33,13 @@ const SectionFactory = ({
 
   const removeElement = () => parent.removeChild(section);
 
+  const render = () => parent.appendChild(section);
+
   return {
     section,
     parent,
     removeElement,
+    render,
   };
 };
 
@@ -46,6 +49,7 @@ const TextFactory = ({
   text,
   type,
   style,
+  imperial = false,
 }) => {
   const textElement = document.createElement(type);
   textElement.setAttribute('data-name', name);
@@ -57,9 +61,19 @@ const TextFactory = ({
 
   const removeElement = () => parent.removeChild(textElement);
 
+  const changeToImperial = () => {
+    textElement.textContent = imperial;
+  };
+
+  const changeToMetric = () => {
+    textElement.textContent = text;
+  };
+
   return {
     parent,
     removeElement,
+    changeToImperial,
+    changeToMetric,
   };
 };
 

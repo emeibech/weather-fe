@@ -4,6 +4,7 @@ const MoreInfo = ({
   parent,
   property,
   value,
+  imperial = false,
 }) => {
   const container = DivFactory({
     parent,
@@ -16,15 +17,17 @@ const MoreInfo = ({
     name: 'property',
     text: property,
     type: 'p',
-    style: 'opacity-75',
+    style: 'text-zinc-400',
   });
 
   const valueText = TextFactory({
     parent: container.div,
-    name: 'value',
+    name: property,
     text: value,
     type: 'p',
-    style: 'opacity-75',
+    style: 'text-zinc-400',
+    imperial,
+    // style: 'text-zinc-400 bg-zinc-400 rounded-full',
   });
 
   return {
