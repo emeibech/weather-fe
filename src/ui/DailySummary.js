@@ -53,7 +53,7 @@ const DailySummary = ({
     name: 'dayTemp',
     text: `Day: ${tempDay}`,
     type: 'p',
-    style: 'opacity-75 text-sm tracking-wide',
+    style: 'text-zinc-300 text-sm tracking-wide',
   });
 
   const nightTemp = TextFactory({
@@ -62,7 +62,7 @@ const DailySummary = ({
     name: 'nightTemp',
     text: `Night: ${tempNight}`,
     type: 'p',
-    style: 'opacity-75 text-sm tracking-wide',
+    style: 'text-zinc-300 text-sm tracking-wide',
   });
 
   const removeFromDom = () => parent.removeChild(dailyDiv.div);
