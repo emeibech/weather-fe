@@ -9,7 +9,7 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
+  color: rgba(255, 255, 255, 0.9);
   background-color: rgb(15,15,15);
 
   font-synthesis: none;
@@ -28,42 +28,53 @@ body {
 }
 
 #app {
-  min-width: min(90vw, 768px);
+  min-width: min(100vw, 768px);
   max-width: 1280px;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  padding-inline: 1vh;
-  gap: 2rem;
+  gap: 0.5rem;
+  position: relative;
 }
 
 button {
-  border-radius: 8px;
   border: 1px solid transparent;
-  padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
 }
 
 /* custom css */
-h1 {
-  text-shadow: 2px 2px 4px black;
+header {
+  background-image: linear-gradient(0deg, rgb(20,20,20), rgb(40,40,40));
+  inset: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 header div:hover,
 header div:active {
   filter: drop-shadow(1px 1px 1px rgb(255, 180, 255));
+}
+
+h1 {
+  text-shadow: 2px 2px 4px black;
+}
+
+/* button for unit toggler */
+[data-name="unittoggler"] {
+  max-width: min-content;
+  padding-inline: 0.25rem;
+  place-self: flex-end;
+  color: white;
+  filter: none;
+  transition: color, filter 250ms;
+}
+
+[data-name="unittoggler"]:hover,
+[data-name="unittoggler"]:active {
+  color: rgb(255, 80, 255);
+  filter: drop-shadow(2px 2px 8px rgb(255, 80, 255));
 }
 
 [data-name="main"] {
@@ -74,6 +85,12 @@ header div:active {
 
 [data-name="infoContainer"] {
   border-color: rgba(255, 255, 255, 0.1);
+}
+
+
+[data-name="dailyForecastSection"],
+[data-name="currentWeatherSection"] {
+  padding-inline: 4vw;
 }
 
 [data-name="dailyForecastSection"] > div {
@@ -120,4 +137,11 @@ header div:active {
 [data-expanded="true"] {
   max-height: 750px;
   transition: all 250ms ease-out;
+}
+
+@media screen and (max-width: 400px) {
+[data-name="dailyForecastSection"],
+[data-name="currentWeatherSection"] {
+  padding-inline: 0.25rem;
+}
 }
