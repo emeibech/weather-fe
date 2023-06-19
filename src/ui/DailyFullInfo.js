@@ -15,7 +15,8 @@ const DailyFullInfo = ({
   name,
   summary,
   nextElem,
-  data,
+  metric,
+  imperial,
 }) => {
   const fullInfoSection = SectionFactory({
     parent,
@@ -25,8 +26,8 @@ const DailyFullInfo = ({
 
   const dayText = TextFactory({
     parent: fullInfoSection.section,
-    name: data.dt.toLowerCase(),
-    text: data.dt,
+    name: metric.dt.toLowerCase(),
+    text: metric.dt,
     type: 'h3',
     style: 'text-lg place-self-start',
   });
@@ -50,14 +51,14 @@ const DailyFullInfo = ({
     const icon = ImgFactory({
       parent: mainDiv.div,
       name: 'icon',
-      src: icons[data.icon],
+      src: icons[metric.icon],
       style: 'h-16 w-16',
     });
 
     const description = TextFactory({
       parent: mainDiv.div,
       name: 'description',
-      text: data.description,
+      text: metric.description,
       type: 'p',
       style: 'text-xl',
     });
@@ -65,7 +66,7 @@ const DailyFullInfo = ({
     const summaryText = TextFactory({
       parent: mainDiv.div,
       name: 'summaryText',
-      text: `${data.summary}.`,
+      text: `${metric.summary}.`,
       type: 'p',
       style: 'text-zinc-300 text-sm mt-2',
     });
@@ -98,9 +99,10 @@ const DailyFullInfo = ({
     const dayTemp = TextFactory({
       parent: mainDayTemp.div,
       name: 'dayTemp',
-      text: data.tempDay,
+      text: metric.tempDay,
       type: 'p',
       style: 'text-2xl',
+      imperial: imperial.tempDay,
     });
 
     const nightTempDiv = DivFactory({
@@ -125,25 +127,28 @@ const DailyFullInfo = ({
     const nightTemp = TextFactory({
       parent: mainNightTemp.div,
       name: 'nightTemp',
-      text: data.tempNight,
+      text: metric.tempNight,
       type: 'p',
       style: 'text-2xl',
+      imperial: imperial.tempNight,
     });
 
     const feelsLikeDay = TextFactory({
       parent: dayTempDiv.div,
       name: 'feelsLikeDay',
-      text: `Feels Like ${data.feelsLikeDay}`,
+      text: `Feels Like ${metric.feelsLikeDay}`,
       type: 'p',
       style: 'text-sm text-zinc-400',
+      imperial: `Feels Like ${imperial.feelsLikeDay}`,
     });
 
     const feelsLikeNight = TextFactory({
       parent: nightTempDiv.div,
       name: 'feelsLikeNight',
-      text: `Feels Like ${data.feelsLikeNight}`,
+      text: `Feels Like ${metric.feelsLikeNight}`,
       type: 'p',
       style: 'text-sm text-zinc-400',
+      imperial: `Feels Like ${imperial.feelsLikeNight}`,
     });
 
     const extra = DivFactory({
@@ -155,49 +160,50 @@ const DailyFullInfo = ({
     const chanceOfRain = MoreInfo({
       parent: extra.div,
       property: 'Chance of Rain',
-      value: data.pop,
+      value: metric.pop,
     });
 
     const windSpeed = MoreInfo({
       parent: extra.div,
       property: 'Wind Speed',
-      value: data.windSpeed,
+      value: metric.windSpeed,
+      imperial: imperial.windSpeed,
     });
 
     const windDirection = MoreInfo({
       parent: extra.div,
       property: 'Wind Direction',
-      value: data.windDeg,
+      value: metric.windDeg,
     });
 
     const humidity = MoreInfo({
       parent: extra.div,
       property: 'Humidity',
-      value: data.humidity,
+      value: metric.humidity,
     });
 
     const uvi = MoreInfo({
       parent: extra.div,
       property: 'UV Index',
-      value: data.uvi,
+      value: metric.uvi,
     });
 
     const cloudCover = MoreInfo({
       parent: extra.div,
       property: 'Cloud Cover',
-      value: data.clouds,
+      value: metric.clouds,
     });
 
     const sunrise = MoreInfo({
       parent: extra.div,
       property: 'Sunrise',
-      value: data.sunrise,
+      value: metric.sunrise,
     });
 
     const sunset = MoreInfo({
       parent: extra.div,
       property: 'Sunset',
-      value: data.sunset,
+      value: metric.sunset,
     });
 
     return {
@@ -243,6 +249,8 @@ const DailyFullInfo = ({
       fullInfoSection.section.setAttribute('data-expanded', true);
     }, 0);
   };
+
+  removeFromDom();
 
   return {
     fullInfoSection,
