@@ -13,6 +13,7 @@ const DailySummary = ({
   icon,
   tempDay,
   tempNight,
+  imperial,
 }) => {
   const dailyDiv = DivFactory({
     isLoading,
@@ -54,6 +55,7 @@ const DailySummary = ({
     text: `Day: ${tempDay}`,
     type: 'p',
     style: 'text-zinc-300 text-sm tracking-wide',
+    imperial: `Day: ${imperial.tempDay}`,
   });
 
   const nightTemp = TextFactory({
@@ -63,6 +65,7 @@ const DailySummary = ({
     text: `Night: ${tempNight}`,
     type: 'p',
     style: 'text-zinc-300 text-sm tracking-wide',
+    imperial: `Night: ${imperial.tempNight}`,
   });
 
   const removeFromDom = () => parent.removeChild(dailyDiv.div);

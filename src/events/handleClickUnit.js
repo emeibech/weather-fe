@@ -3,9 +3,23 @@ const handleClickUnit = ({ toggler, variableUnits }) => {
     const unit = toggler.button.getAttribute('data-activeunit');
     toggler.setText((unit === 'imperial') ? '°F' : '°C');
 
-    console.log(
-      document.querySelectorAll('[data-name="dailyForecastSection"] > section'),
-    );
+    const textArr = Array.from(document.querySelectorAll(
+      '[data-name="dailyForecastSection"] > section p',
+    ));
+
+    const dataNames = [
+      'dayTemp',
+      'feelsLikeDay',
+      'nightTemp',
+      'feelsLikeNight',
+      'Wind Speed',
+    ];
+
+    const sections = textArr.filter((elem) => dataNames.includes(
+      elem.getAttribute('data-name'),
+    ));
+
+    console.log(sections);
 
     if (unit === 'metric') {
       toggler.button.removeAttribute('data-activeunit');

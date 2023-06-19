@@ -71,8 +71,20 @@ document.addEventListener('DOMContentLoaded', () => {
   // Instantiate and render daily forecast
   const daily = DailyForecast({
     parent: main.mainElement,
-    data: (!isFahrenheit) ? data.metric.daily : data.imperial.daily,
+    metric: data.metric.daily,
+    imperial: data.imperial.daily,
   });
+
+  const test = daily.dailyArr.reduce(
+    (accumulator, currentValue) => {
+      const newVal = [currentValue.dayTemp, currentValue.nightTemp];
+
+      return [...accumulator, ...newVal];
+    },
+    [],
+  );
+
+  // console.log(test);
 
   // handle click events on daily forecast
   handleClickDaily({
@@ -82,7 +94,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   handleClickUnit({
     toggler: header.UnitToggler,
-    variableUnits: current.variableUnits,
+    variableUnits: [
+      ...current.variableUnits,
+      ...test,
+    ],
   });
 
   if (isLoading) console.log(current, location, header);

@@ -1,7 +1,7 @@
 import { SectionFactory, TextFactory } from './elementFactories';
 import DailySummary from './DailySummary';
 
-const DailyForecast = ({ parent, data }) => {
+const DailyForecast = ({ parent, metric, imperial }) => {
   const dailyForecastSection = SectionFactory({
     parent,
     name: 'dailyForecastSection',
@@ -16,14 +16,14 @@ const DailyForecast = ({ parent, data }) => {
     style: 'text-2xl py-4',
   });
 
-  const dailyArr = data.map((dailyData) => {
+  const dailyArr = metric.map((dailyData, index) => {
     const summary = DailySummary({
-
       parent: dailyForecastSection.section,
       day: dailyData.dt,
       icon: dailyData.icon,
       tempDay: dailyData.tempDay,
       tempNight: dailyData.tempNight,
+      imperial: imperial[index],
     });
 
     return summary;
