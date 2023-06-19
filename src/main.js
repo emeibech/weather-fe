@@ -7,6 +7,7 @@ import Header from './ui/Header';
 import Location from './ui/Location';
 import CurrentWeather from './ui/CurrentWeather';
 import DailyForecast from './ui/DailyForecast';
+import FullInfoArray from './ui/FullInfoArray';
 import handleClickDaily from './events/handleClickDaily';
 import handleClickUnit from './events/handleClickUnit';
 import testData from './data/testData';
@@ -84,12 +85,18 @@ document.addEventListener('DOMContentLoaded', () => {
     [],
   );
 
-  // console.log(test);
+  const fullInfoArr = FullInfoArray({
+    dailyArr: daily.dailyArr,
+    metric: data.metric.daily,
+    imperial: data.imperial.daily,
+  });
 
   // handle click events on daily forecast
   handleClickDaily({
     dailyArr: daily.dailyArr,
-    data: (!isFahrenheit) ? data.metric.daily : data.imperial.daily,
+    // metric: data.metric.daily,
+    // imperial: data.imperial.daily,
+    fullInfoArr,
   });
 
   handleClickUnit({

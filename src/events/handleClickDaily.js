@@ -1,31 +1,28 @@
-import DailyFullInfo from '../ui/DailyFullInfo';
-
 const collapse = (full) => {
   full.fullInfoSection.section.addEventListener('click', () => {
     full.summary.render(full.fullInfoSection.section.nextSibling);
     full.removeFromDom();
-  });
+  }, { once: true });
 };
 
-const expand = ({ dailyArr, data }) => {
+const expand = ({ daily, fullInfo }) => {
+  fullInfo.render();
+  daily.removeFromDom();
+  collapse(fullInfo);
+};
+
+const handleClickDaily = ({
+  dailyArr,
+  fullInfoArr,
+}) => {
   dailyArr.forEach((day, index) => {
     day.dailyDiv.div.addEventListener('click', () => {
-      const fullInfo = DailyFullInfo({
-        parent: day.dailyDiv.div.parentElement,
-        name: data[index].dt,
-        summary: day,
-        nextElem: day.dailyDiv.div.nextSibling,
-        data: data[index],
+      expand({
+        daily: day,
+        fullInfo: fullInfoArr[index],
       });
-
-      day.removeFromDom();
-      fullInfo.render();
-
-      collapse(fullInfo);
     });
   });
 };
-
-const handleClickDaily = ({ dailyArr, data }) => expand({ dailyArr, data });
 
 export default handleClickDaily;
