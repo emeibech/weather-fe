@@ -258,6 +258,13 @@ const DailyFullInfo = ({
     summary,
     removeFromDom,
     render,
+    variableUnits: [
+      main.mainDiv.temperature.dayTemp,
+      main.mainDiv.temperature.nightTemp,
+      main.mainDiv.temperature.feelsLikeDay,
+      main.mainDiv.temperature.feelsLikeNight,
+      main.mainDiv.extra.windSpeed.valueText,
+    ],
   };
 };
 

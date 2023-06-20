@@ -76,10 +76,9 @@ document.addEventListener('DOMContentLoaded', () => {
     imperial: data.imperial.daily,
   });
 
-  const test = daily.dailyArr.reduce(
-    (accumulator, currentValue) => {
-      const newVal = [currentValue.dayTemp, currentValue.nightTemp];
-
+  const dailyVariableUnits = daily.dailyArr.reduce(
+    (accumulator, currentVal) => {
+      const newVal = [currentVal.dayTemp, currentVal.nightTemp];
       return [...accumulator, ...newVal];
     },
     [],
@@ -90,6 +89,11 @@ document.addEventListener('DOMContentLoaded', () => {
     metric: data.metric.daily,
     imperial: data.imperial.daily,
   });
+
+  const fullInfoVariableUnits = fullInfoArr.reduce(
+    (accumulator, currentVal) => [...accumulator, ...currentVal.variableUnits],
+    [],
+  );
 
   // handle click events on daily forecast
   handleClickDaily({
@@ -103,7 +107,8 @@ document.addEventListener('DOMContentLoaded', () => {
     toggler: header.UnitToggler,
     variableUnits: [
       ...current.variableUnits,
-      ...test,
+      ...dailyVariableUnits,
+      ...fullInfoVariableUnits,
     ],
   });
 
