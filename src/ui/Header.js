@@ -1,4 +1,6 @@
+import SearchBar from './SearchBar';
 import UnitTogglerBtn from './UnitTogglerBtn';
+import { DivFactory } from './elementFactories';
 
 const Header = ({ isFahrenheit, parent }) => {
   const headerContainer = document.createElement('header');
@@ -28,15 +30,25 @@ const Header = ({ isFahrenheit, parent }) => {
   headerContainer.appendChild(div);
   parent.appendChild(headerContainer);
 
-  // Render unitTogglerBtn
+  const rightHeader = DivFactory({
+    parent: headerContainer,
+    name: 'rightHeader',
+    style: 'flex gap-x-4',
+  });
+
+  // Instantiate Search bar
+  const searchBar = SearchBar(rightHeader.div);
+
+  // Instantiate unitTogglerBtn
   const UnitToggler = UnitTogglerBtn({
     isFahrenheit,
-    parent: headerContainer,
+    parent: rightHeader.div,
   });
 
   return {
     headerContainer,
     UnitToggler,
+    searchBar,
   };
 };
 
