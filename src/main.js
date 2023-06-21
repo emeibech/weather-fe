@@ -3,6 +3,7 @@ import './style.css';
 // import fetchWeatherOC from './data/fetchWeatherOC';
 import filterData from './data/filterData';
 import processData from './data/processData';
+import testData from './data/testData';
 import Header from './ui/Header';
 import Location from './ui/Location';
 import CurrentWeather from './ui/CurrentWeather';
@@ -10,7 +11,8 @@ import DailyForecast from './ui/DailyForecast';
 import FullInfoArray from './ui/FullInfoArray';
 import handleClickDaily from './events/handleClickDaily';
 import handleClickUnit from './events/handleClickUnit';
-import testData from './data/testData';
+import handleFocusSearch from './events/handleFocusSearch';
+import handleClickClear from './events/handleClickClear';
 
 // const initialLoad = async () => {
 //   const ipInfo = await fetchClientCity();
@@ -38,6 +40,8 @@ document.addEventListener('DOMContentLoaded', () => {
     isFahrenheit,
     parent: app,
   });
+
+  console.log(header.searchBar.clearSvg);
 
   // Render main element
   const main = (() => {
@@ -95,14 +99,14 @@ document.addEventListener('DOMContentLoaded', () => {
     [],
   );
 
+  /* ****************************Event Handlers**************************** */
   // handle click events on daily forecast
   handleClickDaily({
     dailyArr: daily.dailyArr,
-    // metric: data.metric.daily,
-    // imperial: data.imperial.daily,
     fullInfoArr,
   });
 
+  // handle click event on unit toggler
   handleClickUnit({
     toggler: header.UnitToggler,
     variableUnits: [
@@ -111,6 +115,9 @@ document.addEventListener('DOMContentLoaded', () => {
       ...fullInfoVariableUnits,
     ],
   });
+
+  handleFocusSearch(header.searchBar);
+  handleClickClear(header.searchBar);
 
   if (isLoading) console.log(current, location, header);
 });

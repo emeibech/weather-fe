@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* boilerplate css */
+/* *****boilerplate css***** */
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -32,7 +32,7 @@ body {
   max-width: 1280px;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 1.5rem;
   position: relative;
 }
 
@@ -44,29 +44,58 @@ button {
   cursor: pointer;
 }
 
-/* custom css */
+/* *****Custom CSS***** */
+/* *****Header***** */
 header {
   background-image: linear-gradient(0deg, rgb(20,20,20), rgb(40,40,40));
   inset: 0;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-content: center;
+  display: flex;
+  justify-content: space-between;
 }
 
-header div:hover,
-header div:active {
-  filter: drop-shadow(1px 1px 1px rgb(255, 180, 255));
+header div:first-child {
+  filter: none;
+  transition: filter 250ms;
+}
+
+header div:first-child:hover,
+header div:first-child:active {
+  filter: drop-shadow(1px 1px 4px rgb(255, 180, 255));
 }
 
 h1 {
   text-shadow: 2px 2px 4px black;
 }
 
-/* button for unit toggler */
+/* -----Search----- */
+[data-name="containerForm"] input {
+  background-color: rgb(15,15,15);
+  padding-block: 0.25rem;
+  border-radius: 9999px;
+  padding-inline: 2rem;
+  width: min(55vw, 300px);
+}
+
+[data-name="containerForm"] img {
+  margin-left: 0.5rem;
+}
+
+[data-name="containerForm"] input,
+[data-name="containerForm"] button,
+[data-name="containerForm"] img {
+  grid-row: 1 / 2;
+  grid-column: 1 / 2;
+}
+
+[data-name="clearBtn"] {
+  justify-self: right;
+  margin-right: 0.5rem;
+}
+
+/* -----Button for unit toggler----- */
 [data-name="unittoggler"] {
   max-width: min-content;
   padding-inline: 0.25rem;
-  place-self: flex-end;
   color: white;
   filter: none;
   transition: color, filter 250ms;
@@ -140,9 +169,10 @@ h1 {
   transition: all 250ms ease-out;
 }
 
+/* *****Media Queries***** */
 @media screen and (max-width: 400px) {
-[data-name="dailyForecastSection"],
-[data-name="currentWeatherSection"] {
-  padding-inline: 0.25rem;
-}
+  [data-name="dailyForecastSection"],
+  [data-name="currentWeatherSection"] {
+    padding-inline: 0.25rem;
+  }
 }
