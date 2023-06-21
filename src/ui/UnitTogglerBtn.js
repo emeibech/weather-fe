@@ -1,7 +1,7 @@
 const UnitTogglerBtn = ({ isFahrenheit, parent }) => {
   const button = document.createElement('button');
   button.textContent = (isFahrenheit) ? '°C' : '°F';
-  button.className = 'text-xl rounded-full shadow-lg text-zinc-200';
+  button.className = 'text-xl rounded-full text-zinc-200';
   button.setAttribute('data-name', 'unittoggler');
   button.setAttribute(
     'data-activeunit',

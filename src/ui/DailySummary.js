@@ -22,6 +22,8 @@ const DailySummary = ({
     style: 'border-t border-b rounded min-w-full gap-y-2',
   });
 
+  dailyDiv.div.setAttribute('data-collapsed', 'true');
+
   const dayText = TextFactory({
     isLoading,
     parent: dailyDiv.div,
