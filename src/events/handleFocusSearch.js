@@ -1,8 +1,13 @@
 const handleFocusSearch = (search) => {
   search.searchInput.addEventListener('input', () => {
     const button = search.clearBtn;
-    button.classList.remove('hidden');
-    if (search.searchInput.value === '') button.classList.add('hidden');
+    const { value } = search.searchInput;
+
+    if (value.length > 0) {
+      button.classList.remove('hidden');
+    } else {
+      button.classList.add('hidden');
+    }
   });
 };
 

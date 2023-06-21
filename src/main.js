@@ -41,8 +41,6 @@ document.addEventListener('DOMContentLoaded', () => {
     parent: app,
   });
 
-  console.log(header.searchBar.clearSvg);
-
   // Render main element
   const main = (() => {
     const mainElement = document.createElement('main');
