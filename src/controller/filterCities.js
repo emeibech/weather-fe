@@ -1,4 +1,4 @@
-import cities from './cities.json';
+import cities from '../data/cities.json';
 
 const filterCities = (input) => cities.filter((info) => {
   // Get trimmed version of city names based on the length of user input
