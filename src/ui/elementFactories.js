@@ -126,10 +126,39 @@ const SvgFactory = ({
   };
 };
 
+const ListItemFactory = ({
+  parent,
+  text,
+  style,
+  name = 'listItem',
+}) => {
+  const li = document.createElement('li');
+  li.textContent = text;
+  li.setAttribute('data-name', name);
+  li.className = style;
+
+  parent.appendChild(li);
+
+  const setText = (string) => {
+    li.textContent = string;
+  };
+
+  const hideListItem = () => li.classList.add('hidden');
+  const showListItem = () => li.classList.remove('hidden');
+
+  return {
+    li,
+    setText,
+    hideListItem,
+    showListItem,
+  };
+};
+
 export {
   DivFactory,
   SectionFactory,
   TextFactory,
   ImgFactory,
   SvgFactory,
+  ListItemFactory,
 };
