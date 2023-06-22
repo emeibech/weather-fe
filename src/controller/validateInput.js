@@ -1,12 +1,14 @@
-const validateInput = (param) => {
+const validateInput = (string) => {
   const regex = /^[a-zA-Z\u0080-\u024F\s\-`."']+$/;
-  // Put characters in array
-  const newString = param.split('')
-  // Filter special characters and symbols using regex pattern
-    .filter((char) => regex.test(char))
-  // Turn the array back to string
-    .join('');
-  return newString.length === param.length;
+  // returns array of invalid characters or empty string if all is valid
+  const invalids = string.split('').filter((char) => !regex.test(char));
+  // remove duplicates and join
+  const invalidChars = [...new Set(invalids)].join('');
+
+  return {
+    isValid: !(invalidChars),
+    invalidChars: invalidChars || null,
+  };
 };
 
 export default validateInput;

@@ -6,6 +6,7 @@ const handleUserInput = ({ dropdown, search }) => {
   search.searchInput.addEventListener('input', () => {
     const { clearBtn } = search;
     const { value } = search.searchInput;
+    const input = validateInput(value);
 
     if (value.length < 1) {
       clearBtn.classList.add('hidden');
@@ -13,7 +14,7 @@ const handleUserInput = ({ dropdown, search }) => {
       clearBtn.classList.remove('hidden');
     }
 
-    if (validateInput(value)) {
+    if (input.isValid) {
       const suggestions = filterCities(value);
       const formattedCities = formatSuggestions(suggestions);
 
@@ -25,6 +26,10 @@ const handleUserInput = ({ dropdown, search }) => {
         dropdown.emptyList();
         dropdown.hideDropdown();
       }
+    } else {
+      dropdown.emptyList();
+      dropdown.displayError(input.invalidChars);
+      dropdown.showDropdown();
     }
   });
 };

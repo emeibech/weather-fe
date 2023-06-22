@@ -50,6 +50,17 @@ const CitiesDropdown = (parent) => {
     });
   };
 
+  const displayError = (invalid) => {
+    emptyList();
+    if (invalid.length > 1) {
+      listItems[0].setText(`Remove invalid characters: ${invalid}`);
+      listItems[0].showListItem();
+    } else {
+      listItems[0].setText(`Remove invalid character: ${invalid}`);
+      listItems[0].showListItem();
+    }
+  };
+
   return {
     dropdown,
     list,
@@ -58,6 +69,7 @@ const CitiesDropdown = (parent) => {
     hideDropdown,
     addToList,
     emptyList,
+    displayError,
   };
 };
 
