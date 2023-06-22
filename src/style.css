@@ -44,13 +44,14 @@ button {
   cursor: pointer;
 }
 
-/* *****Custom CSS***** */
+/* ******************************Custom CSS****************************** */
 /* *****Header***** */
 header {
   background-image: linear-gradient(0deg, rgb(20,20,20), rgb(40,40,40));
   inset: 0;
   display: flex;
   justify-content: space-between;
+  max-height: 48px;
 }
 
 header div:first-child {
@@ -67,17 +68,27 @@ h1 {
   text-shadow: 2px 2px 4px black;
 }
 
+[data-name="rightHeader"] {
+  grid-template-columns: 1fr 34px;
+  column-gap: 0.25rem;
+}
+
 /* -----Search----- */
 [data-name="containerForm"] input {
   background-color: rgb(15,15,15);
   padding-block: 0.25rem;
   border-radius: 9999px;
   padding-inline: 2rem;
-  width: min(55vw, 300px);
+  width: min(65vw, 300px);
 }
 
-[data-name="containerForm"] img {
+[data-name="searchSvg"] {
   margin-left: 0.5rem;
+}
+
+[data-name="clearBtn"] {
+  justify-self: right;
+  margin-right: 0.5rem;
 }
 
 [data-name="containerForm"] input,
@@ -87,14 +98,20 @@ h1 {
   grid-column: 1 / 2;
 }
 
-[data-name="clearBtn"] {
-  justify-self: right;
-  margin-right: 0.5rem;
+[data-name="dropdown"] {
+  width: min(65vw, 300px);
+  background-image: linear-gradient(0deg, rgb(20,20,20), rgb(40,40,40));
+}
+
+[data-name="listItem"]:focus,
+[data-name="listItem"]:active,
+[data-name="listItem"]:hover {
+  background-color: rgb(50, 50, 50);
 }
 
 /* -----Button for unit toggler----- */
 [data-name="unittoggler"] {
-  max-width: min-content;
+  min-width: 34px;
   padding-inline: 0.25rem;
   color: white;
   filter: none;
