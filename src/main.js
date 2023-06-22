@@ -13,6 +13,8 @@ import handleClickDaily from './events/handleClickDaily';
 import handleClickUnit from './events/handleClickUnit';
 import handleFocusSearch from './events/handleFocusSearch';
 import handleClickClear from './events/handleClickClear';
+import handleUserInput from './events/handleUserInput';
+import CitiesDropdown from './ui/CitiesDropdown';
 
 // const initialLoad = async () => {
 //   const ipInfo = await fetchClientCity();
@@ -78,6 +80,27 @@ document.addEventListener('DOMContentLoaded', () => {
     imperial: data.imperial.daily,
   });
 
+  const fullInfoArr = FullInfoArray({
+    dailyArr: daily.dailyArr,
+    metric: data.metric.daily,
+    imperial: data.imperial.daily,
+  });
+
+  const citiesDropdown = CitiesDropdown(header.rightHeader.div);
+
+  /* ****************************Event Handlers**************************** */
+  // handle click events on daily forecast
+  const fullInfoVariableUnits = fullInfoArr.reduce(
+    (accumulator, currentVal) => [...accumulator, ...currentVal.variableUnits],
+    [],
+  );
+
+  handleClickDaily({
+    dailyArr: daily.dailyArr,
+    fullInfoArr,
+  });
+
+  // handle click event on unit toggler
   const dailyVariableUnits = daily.dailyArr.reduce(
     (accumulator, currentVal) => {
       const newVal = [currentVal.dayTemp, currentVal.nightTemp];
@@ -86,25 +109,6 @@ document.addEventListener('DOMContentLoaded', () => {
     [],
   );
 
-  const fullInfoArr = FullInfoArray({
-    dailyArr: daily.dailyArr,
-    metric: data.metric.daily,
-    imperial: data.imperial.daily,
-  });
-
-  const fullInfoVariableUnits = fullInfoArr.reduce(
-    (accumulator, currentVal) => [...accumulator, ...currentVal.variableUnits],
-    [],
-  );
-
-  /* ****************************Event Handlers**************************** */
-  // handle click events on daily forecast
-  handleClickDaily({
-    dailyArr: daily.dailyArr,
-    fullInfoArr,
-  });
-
-  // handle click event on unit toggler
   handleClickUnit({
     toggler: header.UnitToggler,
     variableUnits: [
@@ -115,7 +119,16 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   handleFocusSearch(header.searchBar);
-  handleClickClear(header.searchBar);
+
+  handleClickClear({
+    search: header.searchBar,
+    dropdown: citiesDropdown,
+  });
+
+  handleUserInput({
+    dropdown: citiesDropdown,
+    input: header.searchBar.searchInput,
+  });
 
   if (isLoading) console.log(current, location, header);
 });

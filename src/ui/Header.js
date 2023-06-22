@@ -4,7 +4,7 @@ import { DivFactory } from './elementFactories';
 
 const Header = ({ isFahrenheit, parent }) => {
   const headerContainer = document.createElement('header');
-  headerContainer.className = 'px-4 py-2 sticky';
+  headerContainer.className = 'p-2 sticky';
   headerContainer.setAttribute('data-name', 'header');
 
   const div = document.createElement('div');
@@ -33,7 +33,7 @@ const Header = ({ isFahrenheit, parent }) => {
   const rightHeader = DivFactory({
     parent: headerContainer,
     name: 'rightHeader',
-    style: 'flex gap-x-4',
+    style: 'grid',
   });
 
   // Instantiate Search bar
@@ -47,6 +47,7 @@ const Header = ({ isFahrenheit, parent }) => {
 
   return {
     headerContainer,
+    rightHeader,
     UnitToggler,
     searchBar,
   };
