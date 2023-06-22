@@ -15,6 +15,7 @@ import handleFocusSearch from './events/handleFocusSearch';
 import handleClickClear from './events/handleClickClear';
 import handleUserInput from './events/handleUserInput';
 import CitiesDropdown from './ui/CitiesDropdown';
+import handleBlurSearch from './events/handleBlurSearch';
 
 // const initialLoad = async () => {
 //   const ipInfo = await fetchClientCity();
@@ -118,7 +119,15 @@ document.addEventListener('DOMContentLoaded', () => {
     ],
   });
 
-  handleFocusSearch(header.searchBar);
+  handleFocusSearch({
+    search: header.searchBar,
+    dropdown: citiesDropdown,
+  });
+
+  handleBlurSearch({
+    search: header.searchBar,
+    dropdown: citiesDropdown,
+  });
 
   handleClickClear({
     search: header.searchBar,
@@ -126,8 +135,8 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   handleUserInput({
+    search: header.searchBar,
     dropdown: citiesDropdown,
-    input: header.searchBar.searchInput,
   });
 
   if (isLoading) console.log(current, location, header);

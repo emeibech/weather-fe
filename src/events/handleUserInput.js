@@ -2,9 +2,16 @@ import validateInput from '../controller/validateInput';
 import filterCities from '../controller/filterCities';
 import formatSuggestions from '../controller/formatSuggestions';
 
-const handleUserInput = ({ dropdown, input }) => {
-  input.addEventListener('input', () => {
-    const { value } = input;
+const handleUserInput = ({ dropdown, search }) => {
+  search.searchInput.addEventListener('input', () => {
+    const { clearBtn } = search;
+    const { value } = search.searchInput;
+
+    if (value.length < 1) {
+      clearBtn.classList.add('hidden');
+    } else {
+      clearBtn.classList.remove('hidden');
+    }
 
     if (validateInput(value)) {
       const suggestions = filterCities(value);
