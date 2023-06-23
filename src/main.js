@@ -16,6 +16,7 @@ import handleClickClear from './events/handleClickClear';
 import handleUserInput from './events/handleUserInput';
 import CitiesDropdown from './ui/CitiesDropdown';
 import handleBlurSearch from './events/handleBlurSearch';
+import Placeholder from './controller/Placeholder';
 
 // const initialLoad = async () => {
 //   const ipInfo = await fetchClientCity();
@@ -31,18 +32,13 @@ import handleBlurSearch from './events/handleBlurSearch';
 
 document.addEventListener('DOMContentLoaded', () => {
   const app = document.querySelector('#app');
-  const isLoading = false;
-  const isFahrenheit = false;
 
   // Process test data
   const data = processData(filterData(testData));
   // console.table(data.metric.daily[0]);
 
   // Render header
-  const header = Header({
-    isFahrenheit,
-    parent: app,
-  });
+  const header = Header(app);
 
   // Render main element
   const main = (() => {
@@ -54,90 +50,188 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const removeElement = () => mainElement.removeChild(mainElement);
 
+    const fade = () => {
+      mainElement.removeAttribute('data-visible', 'true');
+      mainElement.setAttribute('data-visible', 'false');
+      setTimeout(() => {
+        mainElement.removeAttribute('data-visible', 'false');
+        mainElement.setAttribute('data-visible', 'true');
+      }, 50);
+    };
+
     return {
       mainElement,
       removeElement,
+      fade,
     };
   })();
 
+  const placeholder = (() => {
+    const skeleton = Placeholder(main.mainElement);
+    main.fade();
+    return skeleton;
+  })();
+
+  setTimeout(() => {
+    placeholder.removeFromDom();
+
+    const location = Location({
+      parent: main.mainElement,
+      city: 'Tokyo',
+      country: 'Japan',
+    });
+
+    const current = CurrentWeather({
+      parent: main.mainElement,
+      metric: data.metric.current,
+      imperial: data.imperial.current,
+    });
+
+    const daily = DailyForecast({
+      parent: main.mainElement,
+      metric: data.metric.daily,
+      imperial: data.imperial.daily,
+    });
+
+    main.fade();
+
+    const fullInfoArr = FullInfoArray({
+      dailyArr: daily.dailyArr,
+      metric: data.metric.daily,
+      imperial: data.imperial.daily,
+    });
+
+    const citiesDropdown = CitiesDropdown(header.rightHeader.div);
+
+    /* ****************************Event Handlers**************************** */
+    // handle click events on daily forecast
+    const fullInfoVariableUnits = fullInfoArr.reduce(
+      (accumulator, currentVal) => [...accumulator, ...currentVal.variableUnits],
+      [],
+    );
+
+    handleClickDaily({
+      dailyArr: daily.dailyArr,
+      fullInfoArr,
+    });
+
+    // handle click event on unit toggler
+    const dailyVariableUnits = daily.dailyArr.reduce(
+      (accumulator, currentVal) => {
+        const newVal = [currentVal.dayTemp, currentVal.nightTemp];
+        return [...accumulator, ...newVal];
+      },
+      [],
+    );
+
+    handleClickUnit({
+      toggler: header.UnitToggler,
+      variableUnits: [
+        ...current.variableUnits,
+        ...dailyVariableUnits,
+        ...fullInfoVariableUnits,
+      ],
+    });
+
+    handleFocusSearch({
+      search: header.searchBar,
+      dropdown: citiesDropdown,
+    });
+
+    handleBlurSearch({
+      search: header.searchBar,
+      dropdown: citiesDropdown,
+    });
+
+    handleClickClear({
+      search: header.searchBar,
+      dropdown: citiesDropdown,
+    });
+
+    handleUserInput({
+      search: header.searchBar,
+      dropdown: citiesDropdown,
+    });
+  }, 2000);
+
+  // console.log(placeholder);
+
   // Instantiate and render location
-  const location = Location({
-    parent: main.mainElement,
-    city: 'Tokyo',
-    country: 'Japan',
-  });
+  // const location = Location({
+  //   parent: main.mainElement,
+  //   city: 'Tokyo',
+  //   country: 'Japan',
+  // });
 
-  // Instantiate and render current weather
-  const current = CurrentWeather({
-    parent: main.mainElement,
-    metric: data.metric.current,
-    imperial: data.imperial.current,
-  });
+  // // Instantiate and render current weather
+  // const current = CurrentWeather({
+  //   parent: main.mainElement,
+  //   metric: data.metric.current,
+  //   imperial: data.imperial.current,
+  // });
 
-  // Instantiate and render daily forecast
-  const daily = DailyForecast({
-    parent: main.mainElement,
-    metric: data.metric.daily,
-    imperial: data.imperial.daily,
-  });
+  // // Instantiate and render daily forecast
+  // const daily = DailyForecast({
+  //   parent: main.mainElement,
+  //   metric: data.metric.daily,
+  //   imperial: data.imperial.daily,
+  // });
 
-  const fullInfoArr = FullInfoArray({
-    dailyArr: daily.dailyArr,
-    metric: data.metric.daily,
-    imperial: data.imperial.daily,
-  });
+  // const fullInfoArr = FullInfoArray({
+  //   dailyArr: daily.dailyArr,
+  //   metric: data.metric.daily,
+  //   imperial: data.imperial.daily,
+  // });
 
-  const citiesDropdown = CitiesDropdown(header.rightHeader.div);
+  // const citiesDropdown = CitiesDropdown(header.rightHeader.div);
 
-  /* ****************************Event Handlers**************************** */
-  // handle click events on daily forecast
-  const fullInfoVariableUnits = fullInfoArr.reduce(
-    (accumulator, currentVal) => [...accumulator, ...currentVal.variableUnits],
-    [],
-  );
+  // /* ****************************Event Handlers**************************** */
+  // // handle click events on daily forecast
+  // const fullInfoVariableUnits = fullInfoArr.reduce(
+  //   (accumulator, currentVal) => [...accumulator, ...currentVal.variableUnits],
+  //   [],
+  // );
 
-  handleClickDaily({
-    dailyArr: daily.dailyArr,
-    fullInfoArr,
-  });
+  // handleClickDaily({
+  //   dailyArr: daily.dailyArr,
+  //   fullInfoArr,
+  // });
 
-  // handle click event on unit toggler
-  const dailyVariableUnits = daily.dailyArr.reduce(
-    (accumulator, currentVal) => {
-      const newVal = [currentVal.dayTemp, currentVal.nightTemp];
-      return [...accumulator, ...newVal];
-    },
-    [],
-  );
+  // // handle click event on unit toggler
+  // const dailyVariableUnits = daily.dailyArr.reduce(
+  //   (accumulator, currentVal) => {
+  //     const newVal = [currentVal.dayTemp, currentVal.nightTemp];
+  //     return [...accumulator, ...newVal];
+  //   },
+  //   [],
+  // );
 
-  handleClickUnit({
-    toggler: header.UnitToggler,
-    variableUnits: [
-      ...current.variableUnits,
-      ...dailyVariableUnits,
-      ...fullInfoVariableUnits,
-    ],
-  });
+  // handleClickUnit({
+  //   toggler: header.UnitToggler,
+  //   variableUnits: [
+  //     ...current.variableUnits,
+  //     ...dailyVariableUnits,
+  //     ...fullInfoVariableUnits,
+  //   ],
+  // });
 
-  handleFocusSearch({
-    search: header.searchBar,
-    dropdown: citiesDropdown,
-  });
+  // handleFocusSearch({
+  //   search: header.searchBar,
+  //   dropdown: citiesDropdown,
+  // });
 
-  handleBlurSearch({
-    search: header.searchBar,
-    dropdown: citiesDropdown,
-  });
+  // handleBlurSearch({
+  //   search: header.searchBar,
+  //   dropdown: citiesDropdown,
+  // });
 
-  handleClickClear({
-    search: header.searchBar,
-    dropdown: citiesDropdown,
-  });
+  // handleClickClear({
+  //   search: header.searchBar,
+  //   dropdown: citiesDropdown,
+  // });
 
-  handleUserInput({
-    search: header.searchBar,
-    dropdown: citiesDropdown,
-  });
-
-  if (isLoading) console.log(current, location, header);
+  // handleUserInput({
+  //   search: header.searchBar,
+  //   dropdown: citiesDropdown,
+  // });
 });
