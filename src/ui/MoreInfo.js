@@ -4,7 +4,8 @@ const MoreInfo = ({
   parent,
   property,
   value,
-  imperial = false,
+  placeholder,
+  imperial,
 }) => {
   const container = DivFactory({
     parent,
@@ -12,23 +13,46 @@ const MoreInfo = ({
     style: 'flex flex-row justify-between border-b py-1',
   });
 
-  const propertyText = TextFactory({
-    parent: container.div,
-    name: 'property',
-    text: property,
-    type: 'p',
-    style: 'text-zinc-400',
-  });
+  const propertyText = (() => {
+    if (placeholder) {
+      return TextFactory({
+        parent: container.div,
+        name: 'placeholderText',
+        text: property,
+        type: 'p',
+        style: 'animate-pulse',
+      });
+    }
 
-  const valueText = TextFactory({
-    parent: container.div,
-    name: property,
-    text: value,
-    type: 'p',
-    style: 'text-zinc-400',
-    imperial,
-    // style: 'text-zinc-400 bg-zinc-400 rounded-full',
-  });
+    return TextFactory({
+      parent: container.div,
+      name: 'property',
+      text: property,
+      type: 'p',
+      style: 'text-zinc-400',
+    });
+  })();
+
+  const valueText = (() => {
+    if (placeholder) {
+      return TextFactory({
+        parent: container.div,
+        name: 'placeholderText',
+        text: value,
+        type: 'p',
+        style: 'w-auto animate-pulse',
+      });
+    }
+
+    return TextFactory({
+      parent: container.div,
+      name: property,
+      text: value,
+      type: 'p',
+      style: 'text-zinc-400',
+      imperial,
+    });
+  })();
 
   return {
     propertyText,

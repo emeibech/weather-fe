@@ -2,7 +2,7 @@ import SearchBar from './SearchBar';
 import UnitTogglerBtn from './UnitTogglerBtn';
 import { DivFactory } from './elementFactories';
 
-const Header = ({ isFahrenheit, parent }) => {
+const Header = (parent) => {
   const headerContainer = document.createElement('header');
   headerContainer.className = 'p-2 sticky';
   headerContainer.setAttribute('data-name', 'header');
@@ -41,7 +41,7 @@ const Header = ({ isFahrenheit, parent }) => {
 
   // Instantiate unitTogglerBtn
   const UnitToggler = UnitTogglerBtn({
-    isFahrenheit,
+    isFahrenheit: false,
     parent: rightHeader.div,
   });
 
