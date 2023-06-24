@@ -5,6 +5,7 @@ import clear from '../assets/svgs/clear-white.svg';
 const SearchBar = (parent) => {
   const containerForm = (() => {
     const form = document.createElement('form');
+    form.setAttribute('action', '');
     form.setAttribute('data-name', 'containerForm');
     form.className = 'grid items-center';
 

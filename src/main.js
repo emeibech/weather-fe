@@ -1,11 +1,12 @@
 import './style.css';
 import Header from './ui/Header';
+import CitiesDropdown from './ui/CitiesDropdown';
+import initialLoad from './controller/initialLoad';
 import handleFocusSearch from './events/handleFocusSearch';
+import handleBlurSearch from './events/handleBlurSearch';
 import handleClickClear from './events/handleClickClear';
 import handleUserInput from './events/handleUserInput';
-import CitiesDropdown from './ui/CitiesDropdown';
-import handleBlurSearch from './events/handleBlurSearch';
-import initialLoad from './controller/initialLoad';
+import handleSubmitSearch from './events/handleSubmitSearch';
 
 document.addEventListener('DOMContentLoaded', () => {
   const app = document.querySelector('#app');
@@ -13,6 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const citiesDropdown = CitiesDropdown(header.rightHeader.div);
 
   initialLoad(app);
+
+  handleSubmitSearch(header.searchBar);
 
   handleFocusSearch({
     search: header.searchBar,

@@ -19,7 +19,7 @@ const CurrentWeather = ({
     name: 'currentWeatherSection',
     style: 'flex flex-col gap-y-12',
   });
-  console.log(isFahrenheit);
+
   // Main info for current weather
   const main = (() => {
     const mainDiv = DivFactory({

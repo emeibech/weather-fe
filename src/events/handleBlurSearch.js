@@ -1,4 +1,4 @@
-import handleClickDropdown from './handleClickDropdown';
+import onecall from '../controller/onecall';
 import getCountryCode from '../controller/getCountryCode';
 
 const handleBlurSearch = ({ search, dropdown }) => {
@@ -10,7 +10,7 @@ const handleBlurSearch = ({ search, dropdown }) => {
     if (target.nodeName === 'LI') {
       [input.value] = target.textContent.split(',');
 
-      handleClickDropdown({
+      onecall({
         lat: target.getAttribute('data-lat'),
         lon: target.getAttribute('data-lon'),
         city: target.textContent.split(',')[0],
@@ -26,7 +26,7 @@ const handleBlurSearch = ({ search, dropdown }) => {
         const li = target.parentElement;
         [input.value] = li.textContent.split(',');
 
-        handleClickDropdown({
+        onecall({
           lat: li.getAttribute('data-lat'),
           lon: li.getAttribute('data-lon'),
           city: li.textContent.split(',')[0],
