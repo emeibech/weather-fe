@@ -38,7 +38,9 @@ const CitiesDropdown = (parent) => {
 
   const addToList = (array) => {
     array.forEach((item, index) => {
-      listItems[index].setText(item);
+      listItems[index].setText(item.string);
+      listItems[index].li.setAttribute('data-lat', item.lat);
+      listItems[index].li.setAttribute('data-lon', item.lon);
       listItems[index].showListItem();
     });
   };
