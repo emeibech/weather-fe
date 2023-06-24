@@ -5,6 +5,7 @@ import FullInfoArray from '../ui/FullInfoArray';
 import handleClickDaily from '../events/handleClickDaily';
 import handleClickUnit from '../events/handleClickUnit';
 import UnitTogglerBtn from '../ui/UnitTogglerBtn';
+import { capitalize } from '../data/processors';
 import { MainFactory } from '../ui/elementFactories';
 
 const Weather = ({
@@ -25,7 +26,7 @@ const Weather = ({
 
   Location({
     parent: main.mainElement,
-    city,
+    city: capitalize(city),
     country,
     countryCode,
   });
