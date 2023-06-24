@@ -14,6 +14,7 @@ const DailySummary = ({
   tempNight,
   imperial,
   placeholder,
+  isFahrenheit,
 }) => {
   const summary = (() => {
     if (placeholder) {
@@ -61,6 +62,7 @@ const DailySummary = ({
       type: 'p',
       style: 'text-zinc-300 text-sm tracking-wide',
       imperial: `Day: ${imperial.tempDay}`,
+      isFahrenheit,
     });
 
     const nightTemp = TextFactory({
@@ -70,6 +72,7 @@ const DailySummary = ({
       type: 'p',
       style: 'text-zinc-300 text-sm tracking-wide',
       imperial: `Night: ${imperial.tempNight}`,
+      isFahrenheit,
     });
 
     return {

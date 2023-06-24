@@ -1,4 +1,6 @@
-const UnitTogglerBtn = ({ isFahrenheit, parent }) => {
+const UnitTogglerBtn = (isFahrenheit) => {
+  const parent = document.querySelector('[data-name="rightHeader"]');
+
   const button = document.createElement('button');
   button.textContent = (isFahrenheit) ? '°C' : '°F';
   button.className = 'text-xl rounded-full text-zinc-200';
@@ -8,20 +10,11 @@ const UnitTogglerBtn = ({ isFahrenheit, parent }) => {
     (isFahrenheit) ? 'imperial' : 'metric',
   );
 
-  parent.appendChild(button);
-
-  const removeElement = () => parent.removeChild(button);
-  const render = () => parent.appendChild(button);
-  const setText = (str) => {
-    button.textContent = str;
-  };
+  parent.insertBefore(button, parent.lastChild);
 
   return {
     isFahrenheit,
     button,
-    removeElement,
-    render,
-    setText,
   };
 };
 

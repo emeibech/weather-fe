@@ -1,6 +1,11 @@
 import DailyFullInfo from './DailyFullInfo';
 
-const FullInfoArray = ({ dailyArr, metric, imperial }) => {
+const FullInfoArray = ({
+  dailyArr,
+  metric,
+  imperial,
+  isFahrenheit,
+}) => {
   const fullInfoArr = dailyArr.map((day, index) => {
     const prev = dailyArr[index - 1];
 
@@ -10,6 +15,7 @@ const FullInfoArray = ({ dailyArr, metric, imperial }) => {
       summary: day,
       metric: metric[index],
       imperial: imperial[index],
+      isFahrenheit,
       nextElem: (() => {
         if (index !== 0) return prev.dailyDiv.div.nextSibling;
         return day.dailyDiv.div.parentElement.firstChild.nextSibling;

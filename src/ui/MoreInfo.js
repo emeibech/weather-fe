@@ -6,6 +6,7 @@ const MoreInfo = ({
   value,
   placeholder,
   imperial,
+  isFahrenheit,
 }) => {
   const container = DivFactory({
     parent,
@@ -51,6 +52,7 @@ const MoreInfo = ({
       type: 'p',
       style: 'text-zinc-400',
       imperial,
+      isFahrenheit,
     });
   })();
 

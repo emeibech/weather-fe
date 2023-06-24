@@ -6,6 +6,7 @@ const DailyForecast = ({
   metric,
   imperial,
   placeholder = false,
+  isFahrenheit,
 }) => {
   const mainData = metric || [0, 1, 2, 3, 4, 5, 6, 7];
 
@@ -32,6 +33,7 @@ const DailyForecast = ({
       tempNight: dailyData.tempNight,
       imperial: (placeholder) ? null : imperial[index],
       placeholder,
+      isFahrenheit,
     });
 
     return summary;

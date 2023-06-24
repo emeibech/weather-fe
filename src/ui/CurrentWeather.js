@@ -11,6 +11,7 @@ const CurrentWeather = ({
   parent,
   metric,
   imperial,
+  isFahrenheit,
   placeholder = false,
 }) => {
   const currentWeatherSection = SectionFactory({
@@ -18,13 +19,13 @@ const CurrentWeather = ({
     name: 'currentWeatherSection',
     style: 'flex flex-col gap-y-12',
   });
-
+  console.log(isFahrenheit);
   // Main info for current weather
   const main = (() => {
     const mainDiv = DivFactory({
       parent: currentWeatherSection.section,
       name: 'mainDiv',
-      style: 'grid grid-cols-2 place-items-center',
+      style: 'grid grid-cols-2 place-items-center px-8',
     });
 
     const icon = (() => {
@@ -51,7 +52,7 @@ const CurrentWeather = ({
           name: 'placeholderText',
           text: '##°C',
           type: 'p',
-          style: 'text-6xl animate-pulse',
+          style: 'text-5xl animate-pulse',
         });
       }
 
@@ -60,8 +61,9 @@ const CurrentWeather = ({
         name: 'temp',
         text: metric.temp,
         type: 'p',
-        style: 'text-6xl',
+        style: 'text-5xl',
         imperial: imperial.temp,
+        isFahrenheit,
       });
     })();
 
@@ -105,6 +107,7 @@ const CurrentWeather = ({
     value: (placeholder) ? '##°C' : metric.feelsLike,
     imperial: (placeholder) ? null : imperial.feelsLike,
     placeholder,
+    isFahrenheit,
   });
 
   const chanceOfRain = MoreInfo({
@@ -120,6 +123,7 @@ const CurrentWeather = ({
     value: (placeholder) ? '##kmh' : metric.windSpeed,
     imperial: (placeholder) ? null : imperial.windSpeed,
     placeholder,
+    isFahrenheit,
   });
 
   const windDirection = MoreInfo({
@@ -156,6 +160,7 @@ const CurrentWeather = ({
     value: (placeholder) ? '##km' : metric.visibility,
     imperial: (placeholder) ? null : imperial.visibility,
     placeholder,
+    isFahrenheit,
   });
 
   const sunrise = MoreInfo({

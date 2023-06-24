@@ -1,5 +1,4 @@
 import SearchBar from './SearchBar';
-import UnitTogglerBtn from './UnitTogglerBtn';
 import { DivFactory } from './elementFactories';
 
 const Header = (parent) => {
@@ -39,16 +38,9 @@ const Header = (parent) => {
   // Instantiate Search bar
   const searchBar = SearchBar(rightHeader.div);
 
-  // Instantiate unitTogglerBtn
-  const UnitToggler = UnitTogglerBtn({
-    isFahrenheit: false,
-    parent: rightHeader.div,
-  });
-
   return {
     headerContainer,
     rightHeader,
-    UnitToggler,
     searchBar,
   };
 };

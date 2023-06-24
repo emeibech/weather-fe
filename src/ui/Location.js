@@ -4,6 +4,7 @@ const Location = ({
   parent,
   city,
   country,
+  countryCode,
   placeholder = false,
 }) => {
   const name = (placeholder) ? 'placeholderText' : 'location';
@@ -15,6 +16,7 @@ const Location = ({
 
   const text = (() => {
     if (placeholder) return 'Placeholder, Country';
+    if (country.length > 15) return `${city}, ${countryCode || country}`;
     return `${city}, ${country}`;
   })();
 

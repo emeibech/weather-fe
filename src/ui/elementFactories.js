@@ -19,6 +19,32 @@ const DivFactory = ({
   };
 };
 
+const MainFactory = () => {
+  const app = document.querySelector('#app');
+  const mainElement = document.createElement('main');
+  mainElement.setAttribute('data-name', 'main');
+  mainElement.className = 'px-2';
+
+  app.appendChild(mainElement);
+
+  const removeElement = () => mainElement.removeChild(mainElement);
+
+  const fadeIn = () => {
+    mainElement.removeAttribute('data-visible', 'true');
+    mainElement.setAttribute('data-visible', 'false');
+    setTimeout(() => {
+      mainElement.removeAttribute('data-visible', 'false');
+      mainElement.setAttribute('data-visible', 'true');
+    }, 50);
+  };
+
+  return {
+    mainElement,
+    removeElement,
+    fadeIn,
+  };
+};
+
 const SectionFactory = ({
   parent,
   name,
@@ -49,13 +75,14 @@ const TextFactory = ({
   text,
   type,
   style,
-  imperial = false,
+  isFahrenheit,
+  imperial,
 }) => {
   const textElement = document.createElement(type);
   textElement.setAttribute('data-name', name);
 
   textElement.className = style;
-  textElement.textContent = text;
+  textElement.textContent = (isFahrenheit) ? imperial : text;
 
   parent.appendChild(textElement);
 
@@ -156,6 +183,7 @@ const ListItemFactory = ({
 
 export {
   DivFactory,
+  MainFactory,
   SectionFactory,
   TextFactory,
   ImgFactory,

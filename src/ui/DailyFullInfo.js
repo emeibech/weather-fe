@@ -17,6 +17,7 @@ const DailyFullInfo = ({
   nextElem,
   metric,
   imperial,
+  isFahrenheit,
 }) => {
   const fullInfoSection = SectionFactory({
     parent,
@@ -103,6 +104,7 @@ const DailyFullInfo = ({
       type: 'p',
       style: 'text-2xl',
       imperial: imperial.tempDay,
+      isFahrenheit,
     });
 
     const nightTempDiv = DivFactory({
@@ -131,6 +133,7 @@ const DailyFullInfo = ({
       type: 'p',
       style: 'text-2xl',
       imperial: imperial.tempNight,
+      isFahrenheit,
     });
 
     const feelsLikeDay = TextFactory({
@@ -140,6 +143,7 @@ const DailyFullInfo = ({
       type: 'p',
       style: 'text-sm text-zinc-400',
       imperial: `Feels Like ${imperial.feelsLikeDay}`,
+      isFahrenheit,
     });
 
     const feelsLikeNight = TextFactory({
@@ -149,6 +153,7 @@ const DailyFullInfo = ({
       type: 'p',
       style: 'text-sm text-zinc-400',
       imperial: `Feels Like ${imperial.feelsLikeNight}`,
+      isFahrenheit,
     });
 
     const extra = DivFactory({
@@ -168,6 +173,7 @@ const DailyFullInfo = ({
       property: 'Wind Speed',
       value: metric.windSpeed,
       imperial: imperial.windSpeed,
+      isFahrenheit,
     });
 
     const windDirection = MoreInfo({
