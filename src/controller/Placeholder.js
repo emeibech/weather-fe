@@ -1,20 +1,27 @@
 import Location from '../ui/Location';
 import CurrentWeather from '../ui/CurrentWeather';
 import DailyForecast from '../ui/DailyForecast';
+import { MainFactory } from '../ui/elementFactories';
 
-const Placeholder = (parent) => {
+const Placeholder = () => {
+  const app = document.querySelector('#app');
+  const prevMain = document.querySelector('[data-name="main"]');
+  if (prevMain) app.removeChild(prevMain);
+
+  const main = MainFactory().mainElement;
+
   const location = Location({
-    parent,
+    parent: main,
     placeholder: true,
   });
 
   const current = CurrentWeather({
-    parent,
+    parent: main,
     placeholder: true,
   });
 
   const daily = DailyForecast({
-    parent,
+    parent: main,
     placeholder: true,
   });
 
