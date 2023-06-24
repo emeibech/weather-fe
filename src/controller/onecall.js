@@ -1,10 +1,10 @@
-import Weather from '../controller/Weather';
+import Weather from './Weather';
 import fetchWeatherOC from '../data/fetchWeatherOC';
 import filterData from '../data/filterData';
 import processData from '../data/processData';
-import Placeholder from '../controller/Placeholder';
+import Placeholder from './Placeholder';
 
-const handleClickDropdown = async ({
+const onecall = async ({
   lat,
   lon,
   city,
@@ -30,4 +30,4 @@ const handleClickDropdown = async ({
   });
 };
 
-export default handleClickDropdown;
+export default onecall;
