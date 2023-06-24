@@ -52,6 +52,7 @@ header {
   display: flex;
   justify-content: space-between;
   max-height: 48px;
+  z-index: 1;
 }
 
 header div:first-child {
@@ -61,7 +62,7 @@ header div:first-child {
 
 header div:first-child:hover,
 header div:first-child:active {
-  filter: drop-shadow(1px 1px 4px rgb(255, 180, 255));
+  filter: drop-shadow(1px 1px 1px rgb(255, 80, 255));
 }
 
 h1 {
@@ -115,13 +116,13 @@ h1 {
   padding-inline: 0.25rem;
   color: white;
   filter: none;
-  transition: color, filter, opacity 250ms;
+  transition: filter, color 250ms ease-out;
 }
 
 [data-name="unittoggler"]:hover,
 [data-name="unittoggler"]:active {
   color: rgb(255, 80, 255);
-  filter: drop-shadow(2px 2px 8px rgb(255, 80, 255));
+  filter: drop-shadow(0 0 8px rgb(255, 80, 255));
 }
 
 /* **********Main********** */
