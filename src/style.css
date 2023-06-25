@@ -114,8 +114,7 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
 [data-name="dropdown"] {
   width: min(65vw, 300px);
   background-image: linear-gradient(0deg, rgb(25,25,25), rgb(50,50,50));
-  /* display: flex;
-  flex-direction: column; */
+  grid-row: 2 / span 1;
 }
 
 
