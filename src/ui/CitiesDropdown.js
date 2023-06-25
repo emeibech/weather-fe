@@ -33,8 +33,30 @@ const CitiesDropdown = (parent) => {
     return array;
   })();
 
-  const showDropdown = () => dropdown.div.classList.remove('hidden');
+  const errorMessage = (() => {
+    const button = document.createElement('button');
+    button.setAttribute('data-name', 'errorMessage');
+    button.className = 'hidden p-2 rounded min-w-full';
+
+    dropdown.div.appendChild(button);
+
+    const setErrorMsg = (error) => {
+      button.textContent = error;
+    };
+
+    const showError = () => button.classList.remove('hidden');
+    const hideError = () => button.classList.add('hidden');
+
+    return {
+      button,
+      setErrorMsg,
+      showError,
+      hideError,
+    };
+  })();
+
   const hideDropdown = () => dropdown.div.classList.add('hidden');
+  const showDropdown = () => dropdown.div.classList.remove('hidden');
 
   const addToList = (array) => {
     array.forEach((item, index) => {
@@ -52,26 +74,37 @@ const CitiesDropdown = (parent) => {
     });
   };
 
+  const showList = () => {
+    listItems.forEach((item) => {
+      item.showListItem();
+    });
+  };
+
   const displayError = (invalid) => {
     emptyList();
     if (invalid.length > 1) {
-      listItems[0].setText(`Remove invalid characters: ${invalid}`);
-      listItems[0].showListItem();
+      errorMessage.setErrorMsg(`Remove invalid characters: ${invalid}`);
+      errorMessage.showError();
     } else {
-      listItems[0].setText(`Remove invalid character: ${invalid}`);
-      listItems[0].showListItem();
+      errorMessage.setErrorMsg(`Remove invalid character: ${invalid}`);
+      errorMessage.showError();
     }
   };
+
+  const hideError = () => errorMessage.hideError();
 
   return {
     dropdown,
     list,
     listItems,
+    errorMessage,
     showDropdown,
     hideDropdown,
     addToList,
     emptyList,
+    showList,
     displayError,
+    hideError,
   };
 };
 

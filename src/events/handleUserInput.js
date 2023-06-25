@@ -15,6 +15,7 @@ const handleUserInput = ({ dropdown, search }) => {
     }
 
     if (input.isValid) {
+      dropdown.hideError();
       const suggestions = filterCities(value);
       const formattedCities = formatSuggestions(suggestions);
 

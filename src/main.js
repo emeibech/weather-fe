@@ -7,6 +7,7 @@ import handleBlurSearch from './events/handleBlurSearch';
 import handleClickClear from './events/handleClickClear';
 import handleUserInput from './events/handleUserInput';
 import handleSubmitSearch from './events/handleSubmitSearch';
+import handleClickDropdown from './events/handleClickDropdown';
 
 document.addEventListener('DOMContentLoaded', () => {
   const app = document.querySelector('#app');
@@ -16,6 +17,11 @@ document.addEventListener('DOMContentLoaded', () => {
   initialLoad(app);
 
   handleSubmitSearch(header.searchBar);
+
+  handleClickDropdown({
+    search: header.searchBar,
+    dropdown: citiesDropdown,
+  });
 
   handleFocusSearch({
     search: header.searchBar,
