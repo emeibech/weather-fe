@@ -21,11 +21,12 @@ const DivFactory = ({
 
 const MainFactory = () => {
   const app = document.querySelector('#app');
+  const footer = document.querySelector('[data-name="footer"]');
   const mainElement = document.createElement('main');
   mainElement.setAttribute('data-name', 'main');
   mainElement.className = 'px-2';
 
-  app.appendChild(mainElement);
+  app.insertBefore(mainElement, footer);
 
   const removeElement = () => mainElement.removeChild(mainElement);
 
@@ -98,10 +99,29 @@ const TextFactory = ({
 
   return {
     parent,
+    textElement,
     removeElement,
     changeToImperial,
     changeToMetric,
   };
+};
+
+const LinkFactory = ({
+  parent,
+  name,
+  text,
+  href,
+  style,
+}) => {
+  const link = document.createElement('a');
+  link.href = href;
+  link.textContent = text;
+  link.setAttribute('data-name', name);
+  link.className = style;
+
+  parent.appendChild(link);
+
+  return link;
 };
 
 const ImgFactory = ({
@@ -189,4 +209,5 @@ export {
   ImgFactory,
   SvgFactory,
   ListItemFactory,
+  LinkFactory,
 };
