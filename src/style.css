@@ -215,10 +215,11 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
 /* *****Placeholder***** */
 [data-name="placeholderText"],
 [data-name="placeholderImg"],
-[data-name="placeholderDiv"] {
-  color: rgb(30,30,30);
-  background-color: rgb(30,30,30);
+section [data-name="placeholderDiv"] {
+  color: rgb(80,60,80);
+  background-color: rgb(80,60,80);
   border-radius: 0.5rem;
+  border: none;
 }
 
 [data-name="placeholderDiv"] {
