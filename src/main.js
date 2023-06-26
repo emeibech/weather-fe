@@ -8,14 +8,16 @@ import handleClickClear from './events/handleClickClear';
 import handleUserInput from './events/handleUserInput';
 import handleSubmitSearch from './events/handleSubmitSearch';
 import handleClickDropdown from './events/handleClickDropdown';
+import Footer from './ui/Footer';
 
 document.addEventListener('DOMContentLoaded', () => {
   const app = document.querySelector('#app');
   const header = Header(app);
   const citiesDropdown = CitiesDropdown(header.rightHeader.div);
-
+  Footer(app);
   initialLoad(app);
 
+  // Events
   handleSubmitSearch(header.searchBar);
 
   handleClickDropdown({

@@ -32,7 +32,7 @@ body {
   max-width: 1280px;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 2rem;
   position: relative;
 }
 
@@ -146,6 +146,7 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  min-height: 1490px;
 }
 
 [data-visible="false"] {
