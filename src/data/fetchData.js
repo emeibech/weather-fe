@@ -8,7 +8,7 @@ const fetchData = async (url) => {
     return data;
   } catch (error) {
     console.error(error);
-    return { error: 'Connection Refused' };
+    return { error: 'Network Error: Server might be down.' };
   }
 };
 

@@ -58,11 +58,11 @@ describe('fetchData unit test', () => {
 
   it('returns network error caught in catch block ', async () => {
     global.fetch = vitest.fn().mockRejectedValue({
-      error: 'Connection Refused',
+      error: 'Network Error: Server might be down.',
     });
 
     const data = await fetchData('https://example.com');
 
-    expect(data).toEqual({ error: 'Connection Refused' });
+    expect(data).toEqual({ error: 'Network Error: Server might be down.' });
   });
 });
