@@ -7,6 +7,7 @@ import formatSuggestions from '../controller/formatSuggestions';
 const handleClickDropdown = ({ search, dropdown }) => {
   const input = search.searchInput;
   const suggestionBox = dropdown.dropdown.div;
+  const button = search.clearBtn;
 
   const instantiateOC = (li) => {
     [input.value] = li.textContent.split(',');
@@ -29,6 +30,8 @@ const handleClickDropdown = ({ search, dropdown }) => {
     if (target.nodeName === 'LI') {
       instantiateOC(target);
       dropdown.hideDropdown();
+      input.blur();
+      button.className = 'hidden';
     }
 
     if (target.nodeName === 'BUTTON') {
