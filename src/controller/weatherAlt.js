@@ -2,7 +2,7 @@ import Weather from './Weather';
 import fetchWeatherAlt from '../data/fetchWeatherAlt';
 import filterData from '../data/filterData';
 import processData from '../data/processData';
-import Placeholder from './Placeholder';
+import Placeholder from '../ui/Placeholder';
 import countries from '../data/countries.json';
 import FetchError from '../ui/FetchError';
 

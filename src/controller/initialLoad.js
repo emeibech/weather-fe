@@ -1,4 +1,4 @@
-import Placeholder from './Placeholder';
+import Placeholder from '../ui/Placeholder';
 import fetchClientLocation from '../data/fetchClientLocation';
 import fetchWeatherOC from '../data/fetchWeatherOC';
 import filterData from '../data/filterData';

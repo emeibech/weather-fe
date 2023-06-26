@@ -2,7 +2,7 @@ import Weather from './Weather';
 import fetchWeatherOC from '../data/fetchWeatherOC';
 import filterData from '../data/filterData';
 import processData from '../data/processData';
-import Placeholder from './Placeholder';
+import Placeholder from '../ui/Placeholder';
 import FetchError from '../ui/FetchError';
 
 const onecall = async ({

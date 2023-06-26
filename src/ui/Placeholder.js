@@ -1,7 +1,7 @@
-import Location from '../ui/Location';
-import CurrentWeather from '../ui/CurrentWeather';
-import DailyForecast from '../ui/DailyForecast';
-import { MainFactory } from '../ui/elementFactories';
+import Location from './Location';
+import CurrentWeather from './CurrentWeather';
+import DailyForecast from './DailyForecast';
+import { MainFactory } from './elementFactories';
 
 const Placeholder = () => {
   const app = document.querySelector('#app');
