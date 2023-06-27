@@ -41,23 +41,23 @@ const Footer = (parent) => {
     name: 'githubProfileLink',
     text: 'Author Profile',
     href: 'https://github.com/emeibech',
-    style: 'text-zinc-500 hover:text-fuchsia-300 italic',
+    style: 'text-slate-50 italic hover:text-fuchsia-300 visited:text-slate-500',
   });
 
   LinkFactory({
     parent: ghLink.div,
     name: 'githubProfileLink',
     text: 'Frontend Code',
-    href: 'https://github.com/emeibech',
-    style: 'text-zinc-500 hover:text-fuchsia-300 italic',
+    href: 'https://github.com/emeibech/weather-fe',
+    style: 'text-slate-50 italic hover:text-fuchsia-300 visited:text-slate-500',
   });
 
   LinkFactory({
     parent: ghLink.div,
     name: 'githubProfileLink',
     text: 'API Proxy Server',
-    href: 'https://github.com/emeibech',
-    style: 'text-zinc-500 hover:text-fuchsia-300 italic',
+    href: 'https://github.com/emeibech/api-proxy-server',
+    style: 'text-slate-50 italic hover:text-fuchsia-300 visited:text-slate-500',
   });
 };
 
