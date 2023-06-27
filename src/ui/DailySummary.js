@@ -21,14 +21,14 @@ const DailySummary = ({
       return DivFactory({
         parent,
         name: 'placeholderDiv',
-        style: 'border-t border-b rounded min-w-full gap-y-2 animate-pulse',
+        style: ' rounded min-w-full gap-y-2 animate-pulse',
       });
     }
 
     const dailyDiv = DivFactory({
       parent,
       name: day,
-      style: 'border-t border-b rounded min-w-full gap-y-2',
+      style: ' rounded min-w-full gap-y-2',
     });
 
     const dayText = TextFactory({
