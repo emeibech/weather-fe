@@ -36,7 +36,7 @@ const MainFactory = () => {
     setTimeout(() => {
       mainElement.removeAttribute('data-visible', 'false');
       mainElement.setAttribute('data-visible', 'true');
-    }, 50);
+    }, 10);
   };
 
   return {

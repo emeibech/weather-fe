@@ -150,12 +150,12 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
 }
 
 [data-visible="false"] {
-  opacity: 0.25;
+  opacity: 0;
 }
 
 [data-visible="true"] {
   opacity: 1;
-  transition: opacity 300ms ease-out;
+  transition: opacity 760ms ease-out;
 }
 
 [data-name="currentWeatherSection"] > [data-name="mainDiv"] {
