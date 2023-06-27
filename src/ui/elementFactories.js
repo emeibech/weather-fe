@@ -116,6 +116,7 @@ const LinkFactory = ({
   const link = document.createElement('a');
   link.href = href;
   link.textContent = text;
+  link.target = '_blank';
   link.setAttribute('data-name', name);
   link.className = style;
 
