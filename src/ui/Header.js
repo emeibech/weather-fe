@@ -3,7 +3,7 @@ import { DivFactory } from './elementFactories';
 
 const Header = (parent) => {
   const headerContainer = document.createElement('header');
-  headerContainer.className = 'p-2 sticky border-b border-zinc-800';
+  headerContainer.className = 'p-2 sticky';
   headerContainer.setAttribute('data-name', 'header');
 
   const div = document.createElement('div');
