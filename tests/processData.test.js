@@ -341,7 +341,7 @@ describe('processData unit test', () => {
           description: 'Few Clouds',
           icon: '02n',
           temp: '78°F',
-          feelsLike: '78°F',
+          feelsLike: '80°F',
           pop: '52%',
           windSpeed: '3 mph',
           windDeg: 'W',

@@ -74,7 +74,7 @@ const processData = (data) => {
       current: {
         ...current,
         temp: toFahrenheit(data.current.temp),
-        feelsLike: toFahrenheit(data.current.temp),
+        feelsLike: toFahrenheit(data.current.feelsLike),
         windSpeed: `${Math.round(data.current.windSpeed * 2.2369)} mph`,
         visibility: `${Math.round(
           (data.current.visibility / 1000) * 0.62137119,
