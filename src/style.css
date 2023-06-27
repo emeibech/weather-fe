@@ -195,13 +195,10 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
 }
 
 [data-name="dailyForecastSection"] > div:hover,
-[data-name="dailyForecastSection"] > div:active {
-  background-color: rgb(80, 0, 80);
-}
-
+[data-name="dailyForecastSection"] > div:active,
 [data-name="dailyForecastSection"] > section:hover,
 [data-name="dailyForecastSection"] > section:active {
-  background-color: rgb(25, 25, 25);
+  background-color: rgb(40, 0, 40);
 }
 
 [data-name="summaryText"] {
@@ -219,7 +216,7 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
 
 [data-expanded="true"] {
   max-height: 750px;
-  transition: all 250ms ease-out;
+  transition: max-height 250ms ease-out;
 }
 
 /* *****Placeholder***** */
