@@ -7,8 +7,14 @@ const handleSubmitSearch = (search) => {
   form.addEventListener('submit', (event) => {
     event.preventDefault();
     const { value } = search.searchInput;
+    const selected = document.querySelector('[data-selected]');
 
+    // Prevent api call when input is empty
     if (value === '') return;
+
+    /* This check is to prevent conflict with another api call
+      coming from navigateDropdown when pressing enter. */
+    if (selected) return;
 
     weatherAlt(value);
     search.searchInput.blur();
