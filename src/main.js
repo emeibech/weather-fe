@@ -1,6 +1,7 @@
 import './style.css';
 import Header from './ui/Header';
 import CitiesDropdown from './ui/CitiesDropdown';
+import Footer from './ui/Footer';
 import initialLoad from './controller/initialLoad';
 import handleFocusSearch from './events/handleFocusSearch';
 import handleBlurSearch from './events/handleBlurSearch';
@@ -8,7 +9,6 @@ import handleClickClear from './events/handleClickClear';
 import handleUserInput from './events/handleUserInput';
 import handleSubmitSearch from './events/handleSubmitSearch';
 import handleClickDropdown from './events/handleClickDropdown';
-import Footer from './ui/Footer';
 
 document.addEventListener('DOMContentLoaded', () => {
   const app = document.querySelector('#app');

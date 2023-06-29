@@ -1,3 +1,4 @@
+import removeSelected from '../controller/removeSelected';
 import validateInput from '../controller/validateInput';
 
 const handleBlurSearch = ({ search, dropdown }) => {
@@ -7,6 +8,7 @@ const handleBlurSearch = ({ search, dropdown }) => {
   input.addEventListener('blur', () => {
     if (validateInput(value)) input.focus();
     dropdown.hideDropdown();
+    removeSelected();
   });
 };
 
