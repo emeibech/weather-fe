@@ -44,21 +44,19 @@ const getDay = (unix) => {
 };
 
 const getReadableTimestamp = (unix) => {
-  // Convert unix to milliseconds and get current date
   const date = new Date(unix * 1000);
-  // Get the hour (in 24-hour format) and minutes
   let hours = date.getHours();
   let minutes = date.getMinutes();
-  // Determine AM/PM
   const ampm = hours >= 12 ? 'PM' : 'AM';
+
   // Convert to 12-hour format
   hours %= 12;
   // Convert 0s to 12
   hours = hours || 12;
-  // Add leading zeros if necessary
+
   hours = hours < 10 ? `0${hours}` : hours;
   minutes = minutes < 10 ? `0${minutes}` : minutes;
-  // Return the formatted time string
+
   return `${hours}:${minutes} ${ampm}`;
 };
 

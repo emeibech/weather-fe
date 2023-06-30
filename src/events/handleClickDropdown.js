@@ -23,25 +23,28 @@ const handleClickDropdown = ({ search, dropdown }) => {
     input.value = '';
   };
 
-  suggestionBox.addEventListener('mousedown', (event) => {
-    event.preventDefault();
-    const { target } = event;
+  suggestionBox.addEventListener(
+    'mousedown',
+    (event) => {
+      event.preventDefault();
+      const { target } = event;
 
-    if (target.nodeName === 'LI') {
-      instantiateOC(target);
-      dropdown.hideDropdown();
-      input.blur();
-      button.className = 'hidden';
-    }
+      if (target.nodeName === 'LI') {
+        instantiateOC(target);
+        dropdown.hideDropdown();
+        input.blur();
+        button.className = 'hidden';
+      }
 
-    if (target.nodeName === 'BUTTON') {
-      input.value = sanitizeInput(input.value);
-      dropdown.hideError();
-      const suggestions = filterCities(input.value);
-      const formattedCities = formatSuggestions(suggestions);
-      dropdown.addToList(formattedCities);
-    }
-  });
+      if (target.nodeName === 'BUTTON') {
+        input.value = sanitizeInput(input.value);
+        dropdown.hideError();
+        const suggestions = filterCities(input.value);
+        const formattedCities = formatSuggestions(suggestions);
+        dropdown.addToList(formattedCities);
+      }
+    },
+  );
 };
 
 export default handleClickDropdown;

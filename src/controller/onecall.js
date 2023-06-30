@@ -14,7 +14,6 @@ const onecall = async ({
 }) => {
   const toggler = document.querySelector('[data-activeunit]');
   const unit = (toggler) ? toggler.getAttribute('data-activeunit') : 'metric';
-
   const placeholder = Placeholder();
   const onecallData = await fetchWeatherOC({ lat, lon });
 

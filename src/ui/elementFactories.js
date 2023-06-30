@@ -14,7 +14,6 @@ const DivFactory = ({
 
   return {
     div,
-    parent,
     removeElement,
   };
 };
@@ -64,7 +63,6 @@ const SectionFactory = ({
 
   return {
     section,
-    parent,
     removeElement,
     render,
   };
@@ -98,7 +96,6 @@ const TextFactory = ({
   };
 
   return {
-    parent,
     textElement,
     removeElement,
     changeToImperial,
@@ -142,7 +139,6 @@ const ImgFactory = ({
   const removeElement = () => parent.removeChild(img);
 
   return {
-    parent,
     removeElement,
   };
 };

@@ -8,7 +8,6 @@ import FetchError from '../ui/FetchError';
 
 const initialLoad = async (app) => {
   const placeholder = Placeholder();
-
   const ipInfo = await fetchClientLocation();
 
   if (ipInfo.error) {
@@ -21,7 +20,6 @@ const initialLoad = async (app) => {
   const lat = ipInfo.latitude;
   const lon = ipInfo.longitude;
   const { city } = ipInfo;
-
   const onecallData = await fetchWeatherOC({ lat, lon });
 
   if (onecallData.error) {
@@ -30,9 +28,7 @@ const initialLoad = async (app) => {
   }
 
   const filteredOC = filterData(onecallData);
-
   const processedData = processData(filteredOC);
-
   placeholder.removeFromDom();
 
   Weather({

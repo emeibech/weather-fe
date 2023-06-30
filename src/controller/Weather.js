@@ -45,7 +45,6 @@ const Weather = ({
     imperial: data.imperial.daily,
   });
 
-  // Instantiate unitTogglerBtn
   UnitTogglerBtn(isFahrenheit);
 
   main.fadeIn();
@@ -58,18 +57,16 @@ const Weather = ({
   });
 
   /* **********Event Handlers********** */
-  // handle click events on daily forecast
-  const fullInfoVariableUnits = fullInfoArr.reduce(
-    (accumulator, currentVal) => [...accumulator, ...currentVal.variableUnits],
-    [],
-  );
-
   handleClickDaily({
     dailyArr: daily.dailyArr,
     fullInfoArr,
   });
 
-  // handle click event on unit toggler
+  const fullInfoVariableUnits = fullInfoArr.reduce(
+    (accumulator, currentVal) => [...accumulator, ...currentVal.variableUnits],
+    [],
+  );
+
   const dailyVariableUnits = daily.dailyArr.reduce(
     (accumulator, currentVal) => {
       const newVal = [currentVal.dayTemp, currentVal.nightTemp];
@@ -83,8 +80,6 @@ const Weather = ({
     ...dailyVariableUnits,
     ...fullInfoVariableUnits,
   ]);
-
-  // include unit toggler here; decouple instantiation from header
 };
 
 export default Weather;

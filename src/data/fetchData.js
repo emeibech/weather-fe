@@ -7,7 +7,6 @@ const fetchData = async (url) => {
     const data = await res.json();
     return data;
   } catch (error) {
-    console.error(error);
     return { error: 'Network Error: Server might be down.' };
   }
 };

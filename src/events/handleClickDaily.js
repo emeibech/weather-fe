@@ -1,8 +1,12 @@
 const collapse = (full) => {
-  full.fullInfoSection.section.addEventListener('click', () => {
-    full.summary.render(full.fullInfoSection.section.nextSibling);
-    full.removeFromDom();
-  }, { once: true });
+  full.fullInfoSection.section.addEventListener(
+    'click',
+    () => {
+      full.summary.render(full.fullInfoSection.section.nextSibling);
+      full.removeFromDom();
+    },
+    { once: true },
+  );
 };
 
 const expand = ({ daily, fullInfo }) => {

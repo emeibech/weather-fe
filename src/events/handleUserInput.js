@@ -14,57 +14,66 @@ const handleUserInput = ({ dropdown, search }) => {
   const { clearBtn } = search;
   let activeList;
 
-  input.addEventListener('input', () => {
-    const { value } = input;
-    const userInput = validateInput(value);
-
-    if (value.length < 1) {
-      clearBtn.classList.add('hidden');
-    } else {
-      clearBtn.classList.remove('hidden');
-    }
-
-    if (userInput.isValid) {
-      dropdown.hideError();
-      const suggestions = filterCities(value);
-      const formattedCities = formatSuggestions(suggestions);
-
-      dropdown.emptyList();
-      dropdown.addToList(formattedCities);
-      dropdown.showDropdown();
+  input.addEventListener(
+    'input',
+    () => {
+      const { value } = input;
+      const userInput = validateInput(value);
 
       if (value.length < 1) {
-        dropdown.emptyList();
-        dropdown.hideDropdown();
+        clearBtn.classList.add('hidden');
+      } else {
+        clearBtn.classList.remove('hidden');
       }
-    } else {
-      dropdown.emptyList();
-      dropdown.displayError(userInput.invalidChars);
-      dropdown.showDropdown();
-    }
 
-    activeList = getActiveList();
-  });
+      if (userInput.isValid) {
+        dropdown.hideError();
+        const suggestions = filterCities(value);
+        const formattedCities = formatSuggestions(suggestions);
 
-  input.addEventListener('keydown', (event) => {
-    const { value } = input;
-    const { keyCode } = event;
+        dropdown.emptyList();
+        dropdown.addToList(formattedCities);
+        dropdown.showDropdown();
 
-    if (value !== '') {
+        if (value.length < 1) {
+          dropdown.emptyList();
+          dropdown.hideDropdown();
+        }
+      } else {
+        dropdown.emptyList();
+        dropdown.displayError(userInput.invalidChars);
+        dropdown.showDropdown();
+      }
+
+      activeList = getActiveList();
+    },
+  );
+
+  input.addEventListener(
+    'keydown',
+    (event) => {
+      const { value } = input;
+      const { keyCode } = event;
+
+      if (value !== '') {
       /* Delaying the execution of navigateDropdown ensures
         that it will receive the correct activeList parameter.
         Without the timeout, navigateDropdown will execute first before
-        the function that adds the new activeList in the input eventlistener. */
-      setTimeout(() => {
-        navigateDropdown({
-          activeList,
-          keyCode,
-          search,
-          dropdown,
-        });
-      }, 10);
-    }
-  });
+        the input event listener function that generates the new activeList. */
+        setTimeout(
+          () => {
+            navigateDropdown({
+              activeList,
+              keyCode,
+              search,
+              dropdown,
+            });
+          },
+          10,
+        );
+      }
+    },
+  );
 };
 
 export default handleUserInput;
