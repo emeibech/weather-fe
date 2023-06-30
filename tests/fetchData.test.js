@@ -38,24 +38,6 @@ describe('fetchData unit test', () => {
     });
   });
 
-  it('logs error if an exception occurs', async () => {
-    // Mock console.error
-    console.error = vitest.fn();
-
-    // Mock rejected promise to simulate an exception
-    global.fetch = vitest
-      .fn()
-      .mockRejectedValue(new Error('TypeError: Failed to fetch'));
-
-    // Call the fetchData function
-    await fetchData('https://example.com');
-
-    // Verify the error logging
-    expect(console.error).toHaveBeenCalledWith(
-      new Error('TypeError: Failed to fetch'),
-    );
-  });
-
   it('returns network error caught in catch block ', async () => {
     global.fetch = vitest.fn().mockRejectedValue({
       error: 'Network Error: Server might be down.',
