@@ -8,7 +8,7 @@ const handleBlurSearch = ({ search, dropdown }) => {
   input.addEventListener(
     'blur',
     () => {
-      if (validateInput(value)) input.focus();
+      if (validateInput(value) && value !== '') input.focus();
       dropdown.hideDropdown();
       removeSelected();
     },
