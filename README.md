@@ -10,7 +10,7 @@ Get the current weather and daily forecast. [Live demo](https://weatheremeibech.
 * [Usage](#usage)
 
 ## Summary
-A web application for getting current weather and daily forecast information based on a city parameter. On initial load, the app will fetch the weather information based on the approximate location of your IP address. You can then use the search function to get the weather information for a specific city. The design is minimal, clean, and responsive, and the data fetched is minimized to only include the most pertinent ones in order to avoid information overload.
+Weather! is a web application for looking up the current weather and daily forecast information of a city. On initial load, the app will fetch the weather information of the approximate location provided by the client's IP address, after which the client can utilize the search function to get the weather information for a particular city. Employing a clean, minimal, and responsive design, the app displays only the most pertinent information.
 
 ## Technologies Used
 <img alt="Javascript" src="./src/assets/svgs/javascript.svg" width="200" height="100"> <img alt="Vite" src="./src/assets/svgs/vite-js-logo.svg" width="200" height="100"> <img alt="Tailwind CSS" src="./src/assets/svgs/tailwind-css.svg" width="200" height="100">
