@@ -1,4 +1,4 @@
-# Weather
+# Weather!
 
 Get the current weather and daily forecast. [Live demo](https://weatheremeibech.netlify.app/).
 
