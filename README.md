@@ -24,7 +24,7 @@ A web application for getting current weather and daily forecast information bas
 - Skeleton loaders while fetching data
 
 ## Screenshots
-<img alt="Desktop Screenshot" src="./src/assets/screenshots/screenshot3.png" width="720" height="405"> <img alt="Desktop Screenshot" src="./src/assets/screenshots/screenshot0.png" width="238" height="466"> <img alt="Desktop Screenshot" src="./src/assets/screenshots/screenshot1.png" width="238" height="466"> <img alt="Desktop Screenshot" src="./src/assets/screenshots/screenshot2.png" width="238" height="466">
+<img alt="Desktop Screenshot" src="./src/assets/screenshots/screenshot3.png" width="720" height="405"> <img alt="Desktop Screenshot" src="./src/assets/screenshots/screenshot0.png" width="238" height="436"> <img alt="Desktop Screenshot" src="./src/assets/screenshots/screenshot1.png" width="238" height="436"> <img alt="Desktop Screenshot" src="./src/assets/screenshots/screenshot2.png" width="238" height="436">
 
 ## Usage
 **You need Git and NPM installed.**
