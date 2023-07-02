@@ -74,7 +74,7 @@ const CurrentWeather = ({
           name: 'placeholderText',
           text: 'Placeholder description',
           type: 'p',
-          style: 'text-xl col-span-2 mt-4 animate-pulse',
+          style: 'text-xl text-center col-span-2 mt-4 animate-pulse',
         });
       }
 
