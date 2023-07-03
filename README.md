@@ -1,6 +1,6 @@
 # Weather!
 
-Get the current weather and daily forecast. [Live demo](https://weatheremeibech.netlify.app/).
+Get the current weather and daily forecast. [Demo](https://weatheremeibech.netlify.app/).
 
 ## Table of Contents
 * [Summary](#general-information)
@@ -24,7 +24,7 @@ Weather! is a web application for looking up the current weather and daily forec
 - Skeleton loaders while fetching data
 
 ## Screenshots
-<img alt="Desktop Screenshot" src="./src/assets/screenshots/screenshot3.png" width="720" height="405"> <img alt="Desktop Screenshot" src="./src/assets/screenshots/screenshot0.png" width="238" height="436"> <img alt="Desktop Screenshot" src="./src/assets/screenshots/screenshot1.png" width="238" height="436"> <img alt="Desktop Screenshot" src="./src/assets/screenshots/screenshot2.png" width="238" height="436">
+<img alt="Desktop Screenshot" src="./src/assets/screenshots/screenshot0.png" width="238" height="436"> <img alt="Desktop Screenshot" src="./src/assets/screenshots/screenshot1.png" width="238" height="436"> <img alt="Desktop Screenshot" src="./src/assets/screenshots/screenshot2.png" width="238" height="436"> <img alt="Desktop Screenshot" src="./src/assets/screenshots/screenshot3.png" width="720" height="405">
 
 ## Usage
 **You need Git and NPM installed.**
