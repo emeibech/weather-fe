@@ -1,9 +1,19 @@
+const handleErrorMsg = (statusCode, statusText) => {
+  if (statusCode === 429) {
+    return `${statusCode}: Rate limit exceeded. Try again in an hour.`;
+  }
+
+  return `${statusCode}: ${statusText}`;
+};
+
 const fetchData = async (url) => {
   try {
     const res = await fetch(url);
-    // Return status if response is not ok
-    if (!res.ok) return { error: `${res.status} ${res.statusText}` };
-    // Parse response data
+
+    if (!res.ok) {
+      return { error: handleErrorMsg(res.status, res.statusText) };
+    }
+
     const data = await res.json();
     return data;
   } catch (error) {
