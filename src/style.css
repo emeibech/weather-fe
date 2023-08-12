@@ -10,7 +10,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.9);
-  background-color: rgb(20,20,20);
+  background-color: rgb(20, 20, 20);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -46,7 +46,7 @@ button {
 /* ******************************Custom CSS****************************** */
 /* **********Header********** */
 header {
-  background-image: linear-gradient(0deg, rgb(30,30,30), rgb(50,50,50));
+  background-image: linear-gradient(0deg, rgb(30, 30, 30), rgb(50, 50, 50));
   inset: 0;
   display: flex;
   justify-content: space-between;
@@ -75,17 +75,27 @@ h1 {
 
 /* -----Search----- */
 /* clears the 'X' from Internet Explorer */
-input[type=search]::-ms-clear {  display: none; width : 0; height: 0; }
-input[type=search]::-ms-reveal {  display: none; width : 0; height: 0; }
+input[type="search"]::-ms-clear {
+  display: none;
+  width: 0;
+  height: 0;
+}
+input[type="search"]::-ms-reveal {
+  display: none;
+  width: 0;
+  height: 0;
+}
 
 /* clears the 'X' from Chrome */
 input[type="search"]::-webkit-search-decoration,
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-results-button,
-input[type="search"]::-webkit-search-results-decoration { display: none; }
+input[type="search"]::-webkit-search-results-decoration {
+  display: none;
+}
 
 [data-name="searchInput"] {
-  background-color: rgb(20,20,20);
+  background-color: rgb(20, 20, 20);
   padding-block: 0.25rem;
   border-radius: 9999px;
   padding-inline: 2rem;
@@ -115,11 +125,11 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
 
 [data-name="dropdown"] {
   width: min(65vw, 300px);
-  background-image: linear-gradient(0deg, rgb(25,25,25), rgb(50,50,50));
+  background-image: linear-gradient(0deg, rgb(25, 25, 25), rgb(50, 50, 50));
   grid-row: 2 / span 1;
 }
 
-[data-selected=true],
+[data-selected="true"],
 [data-name="errorMessage"]:focus,
 [data-name="errorMessage"]:active,
 [data-name="errorMessage"]:hover,
@@ -197,7 +207,7 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
 
 [data-name="dailyForecastSection"] > div:hover,
 [data-name="dailyForecastSection"] > div:active {
-  background-color: rgb(60, 0, 60);
+  background-color: rgb(35, 35, 35);
 }
 
 [data-name="summaryText"] {
@@ -205,8 +215,12 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
   text-align: center;
 }
 
-[data-collapsed="false"] { min-height: 750px }
-[data-expanded="false"] { max-height: 86px; }
+[data-collapsed="false"] {
+  min-height: 750px;
+}
+[data-expanded="false"] {
+  max-height: 86px;
+}
 
 [data-collapsed="true"] {
   min-height: 86px;
@@ -222,8 +236,8 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
 [data-name="placeholderText"],
 [data-name="placeholderImg"],
 section [data-name="placeholderDiv"] {
-  color: rgb(80,60,80);
-  background-color: rgb(80,60,80);
+  color: rgb(80, 60, 80);
+  background-color: rgb(80, 60, 80);
   border-radius: 0.5rem;
   border: none;
 }
