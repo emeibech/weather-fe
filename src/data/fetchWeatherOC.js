@@ -9,7 +9,7 @@ const fetchWeatherOC = async ({ lat, lon }) => {
     );
   }
 
-  const url = `${serverUrl}/onecall?lat=${lat}&lon=${lon}`;
+  const url = `${serverUrl}/weather/onecall?lat=${lat}&lon=${lon}`;
   const data = await fetchData(url);
   return data;
 };

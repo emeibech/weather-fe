@@ -9,7 +9,7 @@ const fetchWeatherAlt = async (city) => {
     );
   }
 
-  const url = `${serverUrl}/weather?q=${city}`;
+  const url = `${serverUrl}/weather/currentweather?q=${city}`;
   const data = await fetchData(url);
   return data;
 };
