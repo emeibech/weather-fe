@@ -1,5 +1,7 @@
 import fetchData from './fetchData';
 
+const serverUrl = import.meta.env.VITE_SERVER_URL;
+
 const fetchWeatherAlt = async (city) => {
   if (!city) {
     throw new Error(
@@ -7,7 +9,7 @@ const fetchWeatherAlt = async (city) => {
     );
   }
 
-  const url = `https://emeibechserver.com/weather?q=${city}`;
+  const url = `${serverUrl}/weather?q=${city}`;
   const data = await fetchData(url);
   return data;
 };

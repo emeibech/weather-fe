@@ -1,5 +1,7 @@
 import fetchData from './fetchData';
 
+const serverUrl = import.meta.env.VITE_SERVER_URL;
+
 const fetchWeatherOC = async ({ lat, lon }) => {
   if (!lat || !lon) {
     throw new Error(
@@ -7,7 +9,7 @@ const fetchWeatherOC = async ({ lat, lon }) => {
     );
   }
 
-  const url = `https://emeibechserver.com/onecall?lat=${lat}&lon=${lon}`;
+  const url = `${serverUrl}/onecall?lat=${lat}&lon=${lon}`;
   const data = await fetchData(url);
   return data;
 };
