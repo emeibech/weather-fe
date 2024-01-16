@@ -1,6 +1,6 @@
 # Weather!
 
-Get the current weather and daily forecast. [Demo](https://weatheremeibech.netlify.app/).
+Get the current weather and daily forecast. [Demo](https://weather.emeibech.com).
 
 ## Table of Contents
 * [Summary](#general-information)
