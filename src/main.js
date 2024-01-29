@@ -47,5 +47,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* Fix for ios safari refusing to work with :active pseudoclass
     because it's so fucking special */
-  document.querySelector('body').addEventListener('touchstart', () => {});
+  document.querySelector('body').addEventListener('touchstart', () => { });
 });

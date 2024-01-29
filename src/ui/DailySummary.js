@@ -43,6 +43,7 @@ const DailySummary = ({
       parent: dailyDiv.div,
       name: 'icon',
       src: icons[icon],
+      alt: 'Weather icon',
       style: 'w-8 h-8',
     });
 
@@ -53,6 +54,7 @@ const DailySummary = ({
       width: '48',
       height: '48',
       style: 'w-6 h-6 row-span-2 place-self-center',
+      alt: 'Collapsed/Expanded svg image',
     });
 
     const dayTemp = TextFactory({
@@ -89,9 +91,11 @@ const DailySummary = ({
   const render = (nextSibling) => {
     parent.insertBefore(summary.dailyDiv.div, nextSibling);
     summary.dailyDiv.div.setAttribute('data-collapsed', false);
+    summary.dailyDiv.div.setAttribute('aria-expanded', true);
     setTimeout(() => {
       summary.dailyDiv.div.removeAttribute('data-collapsed', false);
       summary.dailyDiv.div.setAttribute('data-collapsed', true);
+      summary.dailyDiv.div.setAttribute('aria-expanded', false);
     }, 0);
   };
 

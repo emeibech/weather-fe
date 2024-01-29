@@ -40,6 +40,7 @@ const DailyFullInfo = ({
     width: '48',
     height: '48',
     style: 'w-6 h-6 place-self-center',
+    alt: 'Collapsed/Expanded svg image',
   });
 
   const main = (() => {
@@ -94,6 +95,7 @@ const DailyFullInfo = ({
       parent: mainDayTemp.div,
       name: 'sun',
       src: sun,
+      alt: 'Sun',
       style: 'w-6 h-6',
     });
 
@@ -123,6 +125,7 @@ const DailyFullInfo = ({
       parent: mainNightTemp.div,
       name: 'moonSvg',
       src: moon,
+      alt: 'Moon',
       style: 'w-6 h-6',
     });
 
@@ -249,10 +252,12 @@ const DailyFullInfo = ({
   const render = () => {
     parent.insertBefore(fullInfoSection.section, nextElem);
     fullInfoSection.section.setAttribute('data-expanded', false);
+    fullInfoSection.section.setAttribute('aria-expanded', false);
     // setTimeout is just to make this line async and trigger the animation
     setTimeout(() => {
       fullInfoSection.section.removeAttribute('data-expanded', false);
       fullInfoSection.section.setAttribute('data-expanded', true);
+      fullInfoSection.section.setAttribute('aria-expanded', true);
     }, 0);
   };
 

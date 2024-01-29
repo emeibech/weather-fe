@@ -23,6 +23,7 @@ const SearchBar = (parent) => {
 
   const searchInput = (() => {
     const input = document.createElement('input');
+    input.setAttribute('aria-label', 'Search bar');
     input.setAttribute('type', 'search');
     input.setAttribute('id', 'search');
     input.setAttribute('name', 'search');
@@ -40,6 +41,7 @@ const SearchBar = (parent) => {
     name: 'searchSvg',
     src: search,
     style: 'h-4 w-4',
+    alt: 'Search icon',
   });
 
   const clearBtn = (() => {
@@ -58,6 +60,7 @@ const SearchBar = (parent) => {
     name: 'clearSvg',
     src: clear,
     style: 'h-4 w-4',
+    alt: 'Clear icon',
   });
 
   return {

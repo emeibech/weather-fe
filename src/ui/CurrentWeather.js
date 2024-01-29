@@ -41,6 +41,7 @@ const CurrentWeather = ({
         parent: mainDiv.div,
         name: 'icon',
         src: icons[metric.icon],
+        alt: 'Weather icon',
         style: 'h-20 w-20',
       });
     })();

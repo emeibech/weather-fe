@@ -23,6 +23,8 @@ const MainFactory = () => {
   const footer = document.querySelector('[data-name="footer"]');
   const mainElement = document.createElement('main');
   mainElement.setAttribute('data-name', 'main');
+  mainElement.setAttribute('role', 'main');
+  mainElement.setAttribute('aria-label', 'Main content');
   mainElement.className = 'px-2';
 
   app.insertBefore(mainElement, footer);
@@ -127,9 +129,11 @@ const ImgFactory = ({
   name,
   src,
   style,
+  alt,
 }) => {
   const img = document.createElement('img');
   img.setAttribute('data-name', name);
+  img.setAttribute('alt', alt);
 
   img.src = src;
   img.className = style;
@@ -150,6 +154,7 @@ const SvgFactory = ({
   width,
   height,
   style,
+  alt,
 }) => {
   const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
   svg.setAttribute('data-svg', name);
@@ -157,6 +162,7 @@ const SvgFactory = ({
   svg.setAttribute('width', width);
   svg.setAttribute('height', height);
   svg.setAttribute('viewBox', '0 -960 960 960');
+  svg.setAttribute('alt', alt);
 
   const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
   path.setAttribute('d', pathValue);

@@ -8,12 +8,14 @@ const handleClickUnit = (variableUnits) => {
     if (unit === 'metric') {
       toggler.removeAttribute('data-activeunit');
       toggler.setAttribute('data-activeunit', 'imperial');
+      toggler.setAttribute('aria-pressed', 'true');
       variableUnits.forEach((element) => {
         element.changeToImperial();
       });
     } else {
       toggler.removeAttribute('data-activeunit');
       toggler.setAttribute('data-activeunit', 'metric');
+      toggler.setAttribute('aria-pressed', 'false');
       variableUnits.forEach((element) => {
         element.changeToMetric();
       });
