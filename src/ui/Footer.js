@@ -1,4 +1,4 @@
-import { DivFactory, LinkFactory, TextFactory } from './elementFactories';
+import { DivFactory, LinkFactory } from './elementFactories';
 
 const Footer = (parent) => {
   const footer = (() => {
@@ -22,14 +22,6 @@ const Footer = (parent) => {
     return footerElement;
   })();
 
-  TextFactory({
-    parent: footer,
-    name: 'footerInfo',
-    text: '© 2023 Weather! All rights reserved.',
-    type: 'em',
-    style: 'text-zinc-400',
-  });
-
   const ghLink = DivFactory({
     parent: footer,
     name: 'githubLinksDiv',
@@ -41,7 +33,7 @@ const Footer = (parent) => {
     name: 'githubProfileLink',
     text: 'Author Profile',
     href: 'https://github.com/emeibech',
-    style: 'text-slate-50 italic hover:text-fuchsia-300 visited:text-slate-500',
+    style: 'hover:text-slate-50 italic text-cyan-400 visited:text-fuchsia-400',
   });
 
   LinkFactory({
@@ -49,15 +41,15 @@ const Footer = (parent) => {
     name: 'githubProfileLink',
     text: 'Frontend Code',
     href: 'https://github.com/emeibech/weather-fe',
-    style: 'text-slate-50 italic hover:text-fuchsia-300 visited:text-slate-500',
+    style: 'hover:text-slate-50 italic text-cyan-400 visited:text-fuchsia-400',
   });
 
   LinkFactory({
     parent: ghLink.div,
     name: 'githubProfileLink',
-    text: 'API Proxy Server',
-    href: 'https://github.com/emeibech/api-proxy-server',
-    style: 'text-slate-50 italic hover:text-fuchsia-300 visited:text-slate-500',
+    text: 'Server Code',
+    href: 'https://github.com/emeibech/express-server',
+    style: 'hover:text-slate-50 italic text-cyan-400 visited:text-fuchsia-400',
   });
 };
 
