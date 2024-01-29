@@ -34,7 +34,7 @@ describe('fetchData unit test', () => {
     const status = await fetchData('https://example.com');
 
     expect(status).toEqual({
-      error: `${mockResponse.status} ${mockResponse.statusText}`,
+      error: `${mockResponse.status}: ${mockResponse.statusText}`,
     });
   });
 
